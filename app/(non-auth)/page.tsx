@@ -1,7 +1,4 @@
-import { UserButton } from '@clerk/nextjs';
-import Image from 'next/image';
-import { useEffect } from 'react';
-
+import HomePage from '@/page-containers/home';
 // import { authMiddleware } from '@clerk/nextjs';
 
 // This example protects all routes including api/trpc routes
@@ -14,9 +11,5 @@ import { useEffect } from 'react';
 // };
 
 export default function Home() {
-  return (
-    <div className="text-5xl text-primary-700">
-      <h4>sfsdf</h4>
-    </div>
-  );
+  return <HomePage />;
 }

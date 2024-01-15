@@ -18,7 +18,7 @@ const Navbar = () => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   return (
     <nav className="bg-primary-900 top-0 sticky">
-      <div className="mx-auto px-3 md:px-0 py-4 md:w-10/12 max-w-7xl flex items-center justify-between">
+      <div className="wrapper py-4 flex items-center justify-between">
         <Menu className="md:hidden mr-auto" onClick={toggleMobileMenu} />
         <div className="flex items-center gap-8">
           <h4 className="text-xl tracking-wider md:text-2xl">T&Ms</h4>
