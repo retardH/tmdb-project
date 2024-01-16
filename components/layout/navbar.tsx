@@ -11,13 +11,15 @@ import MobileMenu from './mobile-menu';
 import { UserButton, useAuth } from '@clerk/nextjs';
 import { Button } from '../ui/button';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
+  const router = useRouter();
   const { isSignedIn } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   return (
-    <nav className="bg-primary-900 top-0 sticky">
+    <nav className="bg-primary-900">
       <div className="wrapper py-4 flex items-center justify-between">
         <Menu className="md:hidden mr-auto" onClick={toggleMobileMenu} />
         <div className="flex items-center gap-8">
@@ -25,13 +27,13 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-6">
             {NavLinks.map((link) => {
               return (
-                <HoverCard key={link.id}>
+                <HoverCard key={link.id} openDelay={400} closeDelay={200}>
                   <HoverCardTrigger>
                     <span className="capitalize text-base cursor-default">
                       {link.text}
                     </span>
                   </HoverCardTrigger>
-                  <HoverCardContent className="bg-primary-50 shadow-md flex flex-col py-1 items-start rounded-sm">
+                  <HoverCardContent className="bg-primary-50 shadow-md z-50 flex flex-col py-1 items-start rounded-sm">
                     {link.subLinks.map((subLink) => (
                       <span
                         key={subLink.path}
@@ -50,8 +52,8 @@ const Navbar = () => {
           {isSignedIn ? (
             <UserButton />
           ) : (
-            <Button variant="secondary">
-              <Link href="/sign-in">Login</Link>
+            <Button variant="secondary" onClick={() => router.push('/sign-in')}>
+              Login
             </Button>
           )}
         </div>
