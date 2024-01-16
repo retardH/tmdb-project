@@ -8,6 +8,7 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/**/*.{ts,tsx}',
+    './page-containers/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     container: {
@@ -35,6 +36,11 @@ const config: Config = {
         'accordion-up': {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
+        },
+        shimmer: {
+          '100%': {
+            transform: 'translateX(100%)',
+          },
         },
       },
       animation: {
