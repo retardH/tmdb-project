@@ -4,19 +4,19 @@ export const NavLinks = [
     text: 'Movies',
     subLinks: [
       {
-        path: '/popular',
+        path: '/discover?type=movie&search=popular',
         text: 'popular',
       },
       {
-        path: '/now-playing',
+        path: '/discover?type=movie&search=now_playing',
         text: 'now playing',
       },
       {
-        path: '/upcoming',
+        path: '/discover?type=movie&search=upcoming',
         text: 'upcoming',
       },
       {
-        path: '/top-rated',
+        path: '/discover?type=movie&search=top_rated',
         text: 'top rated',
       },
     ],

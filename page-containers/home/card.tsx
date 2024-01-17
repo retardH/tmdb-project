@@ -1,7 +1,7 @@
 import { imageUrlOriginal } from '@/lib/constants';
 import Image from 'next/image';
 import React from 'react';
-import RatingCircle from './rating-circle';
+import RatingCircle from '../../components/shared/rating-circle';
 
 interface Props {
   posterPath: string;

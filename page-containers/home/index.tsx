@@ -11,7 +11,6 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import Popular from './popular';
-import { HomeMovieCartSkeletons } from '@/components/ui/skeletons';
 
 const Home = () => {
   const [trendingTimeWindow, setTrendingTimeWindow] = useState<string>('day');

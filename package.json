@@ -20,9 +20,11 @@
     "framer-motion": "^10.18.0",
     "lucide-react": "^0.304.0",
     "next": "14.0.4",
+    "next-nprogress-bar": "^2.1.2",
     "react": "^18",
     "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18",
+    "react-intersection-observer": "^9.5.3",
     "swr": "^2.2.4",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7"
