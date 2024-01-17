@@ -5,8 +5,9 @@ import 'react-circular-progressbar/dist/styles.css';
 
 interface Props {
   percent: number;
+  size?: string;
 }
-const RatingCircle: React.FC<Props> = ({ percent }) => {
+const RatingCircle: React.FC<Props> = ({ percent, size = 'medium' }) => {
   return (
     <CircularProgressbar
       value={percent}
@@ -16,8 +17,8 @@ const RatingCircle: React.FC<Props> = ({ percent }) => {
       backgroundPadding={5}
       styles={{
         root: {
-          width: '35px',
-          height: '35px',
+          width: size === 'large' ? '45px' : '35px',
+          height: size === 'large' ? '45px' : '35px',
           position: 'relative',
         },
         path: {

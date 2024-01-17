@@ -14,3 +14,13 @@ export function generateColorsByPercent(num: number) {
   }
   return '#dc2626';
 }
+
+export function parsePageTitle(text: string, type: string) {
+  if (text.includes('_')) {
+    return text.split('_').join(' ') + ` ${type}s`;
+  }
+  if (text.includes('-')) {
+    return text.split('-').join(' ') + ` ${type}s`;
+  }
+  return text + ` ${type}s`;
+}

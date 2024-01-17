@@ -1,6 +1,5 @@
-import MovieCard from '@/components/shared/movie-card';
+import MovieCard from '@/page-containers/home/card';
 import { HomeMovieCartSkeletons } from '@/components/ui/skeletons';
-import { TrendingResponse } from '@/lib/types';
 import { usePopularMoviesAndShows } from '@/services/popularMoviesAndShows';
 import { useTrendingMoviesAndShows } from '@/services/trendingMoviesAndShows';
 import React from 'react';
