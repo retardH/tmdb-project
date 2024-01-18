@@ -2,6 +2,7 @@ import MotionDiv from '@/components/shared/motion-div';
 import RatingCircle from '@/components/shared/rating-circle';
 import { imageUrlOriginal } from '@/lib/constants';
 import { MovieOrTVShow } from '@/lib/types';
+import { format } from 'date-fns';
 import Image from 'next/image';
 import React from 'react';
 
@@ -44,8 +45,8 @@ const Card: React.FC<Props> = ({ data, index }) => {
         <h4 className="text-sm md:text-base w-full text-ellipsis overflow-hidden whitespace-nowrap capitalize">
           {data.original_title ?? data.original_name}
         </h4>
-        <span className="text-primary-500 text-sm md:text-base">
-          {data.release_date ?? data.first_air_date}
+        <span className="text-primary-500 text-sm">
+          {format(new Date(data.release_date ?? data.first_air_date), 'PP')}
         </span>
       </div>
     </MotionDiv>

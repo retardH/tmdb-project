@@ -12,7 +12,7 @@
         @apply box-border m-0 p-0;
     }
     body {
-        @apply text-slate-950;
+        @apply text-slate-950 bg-slate-100;
     }
 
     nav {
