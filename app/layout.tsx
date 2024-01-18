@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/layout/navbar';
 import { ClerkLoaded, ClerkLoading, ClerkProvider } from '@clerk/nextjs';
 import Providers from './providers';
+import { LoadingIcon } from '@/components/icons';
 
 export const metadata: Metadata = {
   title: 'T&Ms',
@@ -25,7 +26,14 @@ export default function RootLayout({
               <div className="wrapper">{children}</div>
             </ClerkLoaded>
             <ClerkLoading>
-              <h1>Loading...</h1>
+              <div className="w-full h-screen flex items-center justify-center">
+                <LoadingIcon
+                  width={80}
+                  height={80}
+                  strokeWidth={2}
+                  className="animate-spin"
+                />
+              </div>
             </ClerkLoading>
           </Providers>
         </body>

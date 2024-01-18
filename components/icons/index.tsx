@@ -1,12 +1,22 @@
-export const LoadingIcon = () => {
+import React from 'react';
+
+interface Props extends React.SVGProps<any> {}
+
+export const LoadingIcon: React.FC<Props> = ({
+  width,
+  height,
+  fill,
+  strokeWidth,
+}) => {
   return (
     <svg
-      width="24"
-      height="24"
+      width={width ?? 24}
+      height={height ?? 24}
       viewBox="0 0 24 24"
-      fill="none"
+      fill={fill}
       xmlns="http://www.w3.org/2000/svg"
       className="block animate-spin"
+      strokeWidth={strokeWidth}
     >
       <path
         opacity="0.2"

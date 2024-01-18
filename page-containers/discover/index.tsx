@@ -6,6 +6,9 @@ import Card from './card';
 import { useSearchParams } from 'next/navigation';
 import { useDiscoverLists } from '@/services/discoverLists';
 import { parsePageTitle } from '@/lib/utils';
+import Sort from '@/components/shared/sort';
+import Filter from '@/components/shared/movie-filter';
+import { Button } from '@/components/ui/button';
 
 const Discover = () => {
   const searchParams = useSearchParams();
@@ -25,7 +28,11 @@ const Discover = () => {
         {parsePageTitle(search!, type!)}
       </h1>
       <div className="flex gap-8 flex-col md:flex-row">
-        <div className="flex-2">Filter Component</div>
+        <div className="flex-2 flex flex-col gap-4">
+          <Sort />
+          <Filter />
+          <Button>Search</Button>
+        </div>
         <div className="flex-8">
           <section className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6">
             {data?.results?.map((result, index) => {
