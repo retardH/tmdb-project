@@ -4,6 +4,7 @@ import { imageUrlOriginal } from '@/lib/constants';
 import { MovieOrTVShow } from '@/lib/types';
 import { format } from 'date-fns';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 interface Props {
@@ -17,6 +18,7 @@ const variants = {
 };
 
 const Card: React.FC<Props> = ({ data, index }) => {
+  const router = useRouter();
   return (
     <MotionDiv
       variants={variants}
@@ -28,7 +30,8 @@ const Card: React.FC<Props> = ({ data, index }) => {
         duration: 0.5,
       }}
       viewport={{ amount: 0 }}
-      className="w-full rounded-md bg-primary-50 shadow-md overflow-hidden"
+      className="w-full rounded-md bg-primary-50 shadow-md overflow-hidden cursor-default"
+      onClick={() => router.push(`/movie/${data.id}`)}
     >
       <figure className="relative w-full h-[240px] sm:h-[300px] md:h-[240px] lg:h-[280px] 2xl:h-[240px]">
         <Image
@@ -38,12 +41,12 @@ const Card: React.FC<Props> = ({ data, index }) => {
           className="object-cover object-center"
         />
         <div className="absolute -bottom-[15px] left-2">
-          <RatingCircle size="large" percent={data.vote_average * 10} />
+          <RatingCircle size="large" percent={data.vote_average * 10} width='45px' height='45px'/>
         </div>
       </figure>
       <div className="flex flex-col gap-0 p-4 pt-3 mt-2">
         <h4 className="text-sm md:text-base w-full text-ellipsis overflow-hidden whitespace-nowrap capitalize">
-          {data.original_title ?? data.original_name}
+          {data.title ?? data.name}
         </h4>
         <span className="text-primary-500 text-sm">
           {format(new Date(data.release_date ?? data.first_air_date), 'PP')}

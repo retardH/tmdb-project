@@ -6,19 +6,28 @@ import 'react-circular-progressbar/dist/styles.css';
 interface Props {
   percent: number;
   size?: string;
+  width: string;
+  height: string;
 }
-const RatingCircle: React.FC<Props> = ({ percent, size = 'medium' }) => {
+const RatingCircle: React.FC<Props> = ({
+  percent,
+  size = 'medium',
+  width = '35px',
+  height = '35px',
+}) => {
   return (
     <CircularProgressbar
       value={percent}
       text={`${percent.toFixed(0)}%`}
-      className="w-[35px] h-[35px]"
+      // className="w-[35px] h-[35px]"
       background
       backgroundPadding={5}
       styles={{
         root: {
-          width: size === 'large' ? '45px' : '35px',
-          height: size === 'large' ? '45px' : '35px',
+          // width: size === 'large' ? '45px' : '35px',
+          // height: size === 'large' ? '45px' : '35px',
+          width: width,
+          height: height,
           position: 'relative',
         },
         path: {

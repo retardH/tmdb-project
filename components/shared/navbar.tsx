@@ -8,18 +8,20 @@ import {
 } from '@radix-ui/react-hover-card';
 import { useState } from 'react';
 import MobileMenu from './mobile-menu';
-import { UserButton, useAuth } from '@clerk/nextjs';
+import { UserButton, useAuth, useUser } from '@clerk/nextjs';
 import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Search from './search';
 
 const Navbar = () => {
   const router = useRouter();
-  const { isSignedIn } = useAuth();
+  const { isSignedIn, user } = useUser();
+  console.log('user', user);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   return (
-    <nav className="bg-primary-900">
+    <nav className="bg-primary-900 relative">
       <div className="wrapper py-4 flex items-center justify-between">
         <Menu className="md:hidden mr-auto" onClick={toggleMobileMenu} />
         <div className="flex items-center gap-8">
@@ -70,6 +72,8 @@ const Navbar = () => {
           <SearchIcon className="ml-4" />
         </div>
       </div>
+      <div className="absolute top-full inset-x-0"></div>
+      <Search />
       <MobileMenu isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />
     </nav>
   );

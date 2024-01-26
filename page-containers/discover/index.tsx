@@ -28,7 +28,7 @@ const Discover = () => {
         {parsePageTitle(search!, type!)}
       </h1>
       <div className="flex gap-8 flex-col md:flex-row">
-        <div className="flex-2 flex flex-col gap-4">
+        <div className=" w-full md:w-[285px] flex flex-col gap-4">
           <Sort />
           <Filter />
           <Button>Search</Button>
