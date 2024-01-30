@@ -1,5 +1,5 @@
+import { RatingStar } from '@/components/icons';
 import MotionDiv from '@/components/shared/motion-div';
-import RatingCircle from '@/components/shared/rating-circle';
 import { imageUrlOriginal } from '@/lib/constants';
 import { MovieOrTVShow } from '@/lib/types';
 import { format } from 'date-fns';
@@ -25,27 +25,28 @@ const Card: React.FC<Props> = ({ data, index }) => {
       initial="hidden"
       animate="visible"
       transition={{
-        delay: index * 0.25,
+        delay: index * 0.08,
         ease: 'easeInOut',
         duration: 0.5,
       }}
-      viewport={{ amount: 0 }}
-      className="w-full rounded-md bg-primary-50 shadow-md overflow-hidden cursor-default"
+      viewport={{ amount: 0, once: true }}
+      className="w-full cursor-default"
       onClick={() => router.push(`/movie/${data.id}`)}
     >
-      <figure className="relative w-full h-[240px] sm:h-[300px] md:h-[240px] lg:h-[280px] 2xl:h-[240px]">
+      <figure className="relative w-full h-[240px] sm:h-[300px] md:h-[260px] xl:h-[240px]">
         <Image
           src={`${imageUrlOriginal}${data.poster_path}`}
           alt="poster image"
           fill
-          className="object-cover object-center"
+          className="object-cover object-center rounded-md"
         />
-        <div className="absolute -bottom-[15px] left-2">
-          <RatingCircle size="large" percent={data.vote_average * 10} width='45px' height='45px'/>
+        <div className="absolute left-0 bottom-0 flex items-center gap-1 bg-slate-950 py-1 px-2">
+          <RatingStar />
+          <span className="text-sm">{data.vote_average.toFixed(1)}</span>
         </div>
       </figure>
-      <div className="flex flex-col gap-0 p-4 pt-3 mt-2">
-        <h4 className="text-sm md:text-base w-full text-ellipsis overflow-hidden whitespace-nowrap capitalize">
+      <div className="flex flex-col gap-0 py-2 pt-3">
+        <h4 className="text-sm text-medium md:text-base w-full text-ellipsis overflow-hidden whitespace-nowrap capitalize">
           {data.title ?? data.name}
         </h4>
         <span className="text-primary-500 text-sm">

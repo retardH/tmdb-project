@@ -23,8 +23,8 @@ const Discover = () => {
     return <h1>Loading...</h1>;
   }
   return (
-    <section className="my-10">
-      <h1 className="text-xl md:text-2xl mb-4 capitalize">
+    <section className="my-10 wrapper">
+      <h1 className="text-xl md:text-2xl text-yellow-500 mb-4 capitalize">
         {parsePageTitle(search!, type!)}
       </h1>
       <div className="flex gap-8 flex-col md:flex-row">

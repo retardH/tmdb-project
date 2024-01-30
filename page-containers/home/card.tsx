@@ -2,6 +2,7 @@ import { imageUrlOriginal } from '@/lib/constants';
 import Image from 'next/image';
 import React from 'react';
 import RatingCircle from '../../components/shared/rating-circle';
+import { RatingStar } from '@/components/icons';
 
 interface Props {
   posterPath: string;
@@ -26,11 +27,12 @@ const MovieCard: React.FC<Props> = ({
           fill
           className="rounded-md object-cover object-center"
         />
-        <div className="absolute -bottom-[15px] left-2">
-          <RatingCircle percent={voteCount * 10} />
+        <div className="absolute left-0 bottom-0 flex items-center gap-1 bg-slate-950 py-1 px-2">
+          <RatingStar />
+          <span className="text-sm">{voteCount.toFixed(1)}</span>
         </div>
       </figure>
-      <h2 className="text-base text-primary-950 max-w-[145px] whitespace-nowrap overflow-hidden text-ellipsis capitalize">
+      <h2 className="text-base max-w-[145px] whitespace-nowrap overflow-hidden text-ellipsis capitalize">
         {title}
       </h2>
       <span className="text-primary-500 text-sm">{date}</span>

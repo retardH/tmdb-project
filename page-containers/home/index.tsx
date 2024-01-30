@@ -17,11 +17,11 @@ const Home = () => {
   const [trendingTimeWindow, setTrendingTimeWindow] = useState<string>('day');
   const [popular, setPopular] = useState<string>('movie');
   return (
-    <div>
+    <div className="wrapper">
       <HeroSection imagePath="/f1AQhx6ZfGhPZFTVKgxG91PhEYc.jpg" />
       <section className="my-10">
         <div className="flex items-center gap-4 mb-4">
-          <h2 className="text-2xl lg:text-3xl">Trending</h2>
+          <h2 className="text-2xl lg:text-3xl text-yellow-500">Trending</h2>
           <Select
             value={trendingTimeWindow}
             onValueChange={(value) => setTrendingTimeWindow(value)}
@@ -44,7 +44,9 @@ const Home = () => {
       </section>
       <section className="my-10">
         <div className="flex items-center gap-4 mb-4">
-          <h2 className="text-2xl lg:text-3xl">What&apos;s Popular</h2>
+          <h2 className="text-2xl lg:text-3xl text-yellow-500">
+            What&apos;s Popular
+          </h2>
           <Select value={popular} onValueChange={(value) => setPopular(value)}>
             <SelectTrigger className="w-[120px]">
               <SelectValue placeholder="Movie or TV Shows" />

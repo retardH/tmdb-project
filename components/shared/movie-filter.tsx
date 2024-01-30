@@ -36,27 +36,12 @@ const Filter = () => {
   return (
     <div className="w-full">
       <Accordion type="single" collapsible>
-        <AccordionItem value="one" className="rounded-md shadow-sm bg-white">
+        <AccordionItem
+          value="one"
+          className="rounded-md shadow-sm border-b-0 bg-slate-900"
+        >
           <AccordionTrigger className="px-4">Filters</AccordionTrigger>
-          <Separator className="w-full" />
-          <AccordionContent className="flex flex-col">
-            {/* <div className="px-4 py-4 flex flex-col gap-2">
-              <span>Sort Results By</span>
-              <Select
-              //   value={trendingTimeWindow}
-              //   onValueChange={(value) => setTrendingTimeWindow(value)}
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Sort Options" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="day">Popularity Descending</SelectItem>
-                  <SelectItem value="day">Popularity Ascending</SelectItem>
-                  <SelectItem value="day">{'Title(A-Z)'}</SelectItem>
-                </SelectContent>
-              </Select>
-            </div> */}
-            <Separator className="w-full" />
+          <AccordionContent className="flex flex-col border-t border-t-slate-800">
             <div className="px-4 py-4 flex flex-col gap-2">
               <span className="text-base font-medium">Release Dates</span>
               <DatePicker

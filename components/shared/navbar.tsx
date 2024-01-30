@@ -21,12 +21,12 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   return (
-    <nav className="bg-primary-900 relative">
+    <nav className="bg-primary-950 relative">
       <div className="wrapper py-4 flex items-center justify-between">
         <Menu className="md:hidden mr-auto" onClick={toggleMobileMenu} />
         <div className="flex items-center gap-8">
           <h4
-            className="text-xl tracking-wider md:text-2xl cursor-default"
+            className="text-xl tracking-wider md:text-2xl text-yellow-500 cursor-default"
             onClick={() => router.push('/')}
           >
             T&Ms
@@ -40,12 +40,12 @@ const Navbar = () => {
                       {link.text}
                     </span>
                   </HoverCardTrigger>
-                  <HoverCardContent className="bg-primary-50 shadow-md z-50 flex flex-col py-1 items-start rounded-sm">
+                  <HoverCardContent className="bg-slate-900 shadow-md z-50 flex flex-col py-1 items-start rounded-sm">
                     {link.subLinks.map((subLink) => (
                       <Link
                         href={subLink.path}
                         key={subLink.path}
-                        className="capitalize px-4 py-2 w-full hover:bg-slate-200 text-sm cursor-pointer text-primary-900"
+                        className="capitalize px-4 py-2 w-full hover:bg-slate-800 text-sm cursor-pointer text-slate-50"
                       >
                         {subLink.text}
                       </Link>
@@ -73,7 +73,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="absolute top-full inset-x-0"></div>
-      <Search />
+      {/* <Search /> */}
       <MobileMenu isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />
     </nav>
   );
