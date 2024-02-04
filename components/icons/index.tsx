@@ -55,8 +55,8 @@ export const RatingStar: React.FC<Props> = ({ width = 24, height = 24 }) => {
           y2="20.2076"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FFEE58" />
-          <stop offset="1" stop-color="#FF8F00" />
+          <stop stopColor="#FFEE58" />
+          <stop offset="1" stopColor="#FF8F00" />
         </linearGradient>
       </defs>
     </svg>

@@ -4,6 +4,7 @@ export type MovieAndTVShowResponse = {
 };
 
 export type MovieOrTVShow = {
+  index: number;
   adult: false;
   backdrop_path: string;
   id: number;

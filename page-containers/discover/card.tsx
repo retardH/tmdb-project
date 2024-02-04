@@ -25,7 +25,7 @@ const Card: React.FC<Props> = ({ data, index }) => {
       initial="hidden"
       animate="visible"
       transition={{
-        delay: index * 0.08,
+        delay: data.index * 0.08,
         ease: 'easeInOut',
         duration: 0.5,
       }}
