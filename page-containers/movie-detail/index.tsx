@@ -7,6 +7,9 @@ import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import React from 'react';
 import BannerSection from './banner';
+import { Separator } from '@/components/ui/separator';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+import Credits from '../../components/shared/credits';
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -17,41 +20,43 @@ const MovieDetail = () => {
     useMovieCasts<MovieCreditsReponse>(+id);
 
   const directorName = creditsData?.crew.find(
-    (people) => people.job === 'Director'
+    (people) => people.job === 'Director',
   )?.name;
 
   const backdropImage = `${imageUrlOriginal}${generalData?.backdrop_path}`;
-  const trailerUrl = generalData?.videos.results.find(
-    (r) => r.type === 'Trailer'
+  const trailerId = generalData?.videos.results.find(
+    (r) => r.type === 'Trailer',
   )?.key;
 
   return (
     <section>
-      {generalData && creditsData && (
+      {generalData && (
         <div>
           <BannerSection
-            trailerUrl={trailerUrl}
+            type="Movie"
+            trailerId={trailerId}
             title={generalData?.title}
             tagline={generalData?.tagline}
             backdropImage={backdropImage}
             voteAverage={generalData?.vote_average.toFixed(1)}
             voteCount={generalData?.vote_count}
+            releaseDate={generalData.release_date}
           />
-          <section className="wrapper mt-10 md:mt-16 mb-16 flex gap-6">
-            <figure className="hidden md:block relative flex-1 min-h-[460px]">
+          <section className="wrapper my-10 flex gap-6 md:my-16">
+            <figure className="relative hidden min-h-[460px] flex-1 md:block">
               <Image
                 src={`${imageUrlOriginal}${generalData?.poster_path}`}
                 alt="poster image"
                 fill
-                className="object-cover rounded-md"
+                className="rounded-md object-cover"
               />
             </figure>
-            <section className="flex-3 flex gap-3.5 flex-col">
+            <section className="flex-3 flex flex-col gap-3.5">
               <div className="flex items-center gap-4">
-                <div className="max-w-min px-2 py-1 border text-sm md:text-base border-slate-600 rounded-md uppercase text-center">
+                <div className="max-w-min rounded-md border border-slate-600 px-2 py-1 text-center text-sm uppercase md:text-base">
                   PG-13
                 </div>
-                <div className="max-w-min px-2 py-1 text-sm md:text-base border border-slate-600 rounded-md uppercase text-center">
+                <div className="max-w-min rounded-md border border-slate-600 px-2 py-1 text-center text-sm uppercase md:text-base">
                   {generalData?.status}
                 </div>
               </div>
@@ -61,15 +66,18 @@ const MovieDetail = () => {
                   {generalData?.runtime} minutes
                 </span>
               </div> */}
-              <p className="my-2 text-sm md:text-base leading-relaxed">
-                {generalData?.overview}
-              </p>
+              <div className="my-2">
+                <span className="mb-2 font-semibold">Overview</span>
+                <p className="text-sm leading-relaxed text-slate-300 md:text-base">
+                  {generalData?.overview}
+                </p>
+              </div>
               <div className="flex items-center gap-2">
                 {generalData?.genres.map((genre) => {
                   return (
                     <div
                       key={genre.id}
-                      className="bg-slate-800 border border-slate-700/80 px-3 py-1 rounded-full text-xs md:text-sm"
+                      className="rounded-full border border-slate-700/80 bg-slate-800 px-3 py-1 text-xs md:text-sm"
                     >
                       {genre.name}
                     </div>
@@ -97,6 +105,19 @@ const MovieDetail = () => {
                 <span>{directorName}</span>
               </div>
             </section>
+          </section>
+          <section className="wrapper mb-16">
+            <h4 className="text-lg md:text-xl">Top Billed Casts</h4>
+            <ScrollArea className="w-full whitespace-nowrap rounded-md">
+              <div className="py-4">
+                {/* <Trending timeWindow={trendingTimeWindow} /> */}
+                <Credits
+                  casts={creditsData?.cast}
+                  isLoading={isCreditsDataLoading}
+                />
+              </div>
+              <ScrollBar orientation="horizontal" />
+            </ScrollArea>
           </section>
         </div>
       )}

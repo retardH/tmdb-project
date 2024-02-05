@@ -20,22 +20,23 @@ const MovieCard: React.FC<Props> = ({
 }) => {
   return (
     <div className="flex flex-col items-start gap-1">
-      <figure className="relative w-[145px] h-[225px] rounded-md mb-3">
+      <figure className="relative mb-3 h-[225px] w-[145px] rounded-md">
         <Image
           src={`${imageUrlOriginal}${posterPath}`}
           alt="trending image"
           fill
+          sizes="50vw, (min-width: 768px) 30vw"
           className="rounded-md object-cover object-center"
         />
-        <div className="absolute left-0 bottom-0 flex items-center gap-1 bg-slate-950 py-1 px-2">
+        <div className="absolute bottom-0 left-0 flex items-center gap-1 bg-slate-950 px-2 py-1">
           <RatingStar />
           <span className="text-sm">{voteCount.toFixed(1)}</span>
         </div>
       </figure>
-      <h2 className="text-base max-w-[145px] whitespace-nowrap overflow-hidden text-ellipsis capitalize">
+      <h2 className="max-w-[145px] overflow-hidden text-ellipsis whitespace-nowrap text-base capitalize">
         {title}
       </h2>
-      <span className="text-primary-500 text-sm">{date}</span>
+      <span className="text-sm text-primary-500">{date}</span>
     </div>
   );
 };

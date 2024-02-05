@@ -7,20 +7,20 @@ interface Props {
 }
 const HeroSection: React.FC<Props> = ({ imagePath }) => {
   return (
-    <section className="w-full flex items-center relative h-[400px] -z-10">
+    <section className="relative -z-10 flex h-[400px] w-full items-center">
       <Image
         src={`${imageUrlOriginal}${imagePath}`}
         alt="hero image"
         width={960}
         height={540}
-        className="object-cover absolute -z-20 w-full h-[400px] object-top"
+        className="absolute -z-20 h-[400px] w-full object-cover object-top"
       />
-      <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm -z-10"></div>
-      <div className="p-14 flex justify-center flex-col">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl text-slate-50">
+      <div className="absolute inset-0 -z-10 bg-slate-900/60 backdrop-blur-sm"></div>
+      <div className="flex flex-col justify-center p-14">
+        <h1 className="text-4xl text-slate-50 md:text-5xl lg:text-6xl">
           Welcome.
         </h1>
-        <h1 className="text-2xl lg:text-3xl text-slate-50">
+        <h1 className="text-2xl text-slate-50 lg:text-3xl">
           Millions of Movies, TV shows and People to discover. Explore now.
         </h1>
       </div>

@@ -1,4 +1,7 @@
-import React, { useEffect } from 'react';
+import React, {
+  useEffect,
+  experimental_useEffectEvent as useEffectEvent,
+} from 'react';
 import { Alert, AlertDescription } from '../ui/alert';
 import { cn } from '@/lib/utils';
 
@@ -17,12 +20,12 @@ const SliderChangeAlert: React.FC<Props> = ({ show, setShow, desc }) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [show]);
+  }, [show, setShow]);
   return (
     <Alert
       className={cn(
-        'transition-all absolute top-4 left-1/2 -translate-x-1/2 max-w-max py-1.5 bg-opacity-70 opacity-0',
-        show ? 'opacity-100' : 'pointer-events-none'
+        'absolute left-1/2 top-4 max-w-max -translate-x-1/2 bg-opacity-70 py-1.5 opacity-0 transition-all',
+        show ? 'opacity-100' : 'pointer-events-none',
       )}
     >
       <AlertDescription>{desc}</AlertDescription>

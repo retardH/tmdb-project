@@ -16,14 +16,15 @@ export function generateColorsByPercent(num: number) {
   return '#dc2626';
 }
 
-export function parsePageTitle(text: string, type: string) {
+export function parsePageTitle(text: string, secondText: string) {
+  let type = secondText === 'tv' ? 'tv shows' : 'movies';
   if (text.includes('_')) {
-    return text.split('_').join(' ') + ` ${type}s`;
+    return text.split('_').join(' ') + ` ${type}`;
   }
   if (text.includes('-')) {
-    return text.split('-').join(' ') + ` ${type}s`;
+    return text.split('-').join(' ') + ` ${type}`;
   }
-  return text + ` ${type}s`;
+  return text + ` ${type}`;
 }
 
 export function formatDate(date: string | number, format?: string) {

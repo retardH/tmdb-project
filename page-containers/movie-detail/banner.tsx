@@ -1,15 +1,9 @@
 import { RatingStar } from '@/components/icons';
-import {
-  Dialog,
-  DialogDescription,
-  DialogHeader,
-  DialogContent,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
 import React from 'react';
+import { Play } from 'lucide-react';
 
 interface Props {
   backdropImage: string;
@@ -17,7 +11,9 @@ interface Props {
   tagline: string;
   voteAverage: string;
   voteCount: number;
-  trailerUrl: string | null;
+  trailerId: string | undefined;
+  releaseDate: string;
+  type: string;
 }
 const BannerSection: React.FC<Props> = ({
   backdropImage,
@@ -25,36 +21,43 @@ const BannerSection: React.FC<Props> = ({
   tagline,
   voteAverage,
   voteCount,
-  trailerUrl,
+  trailerId,
+  releaseDate,
+  type,
 }) => {
   return (
-    <section className="w-full z-10 h-[360px] md:h-[400px] xl:h-[460px] relative overflow-hidden">
+    <section className="relative z-10 h-[360px] w-full overflow-hidden md:h-[400px] xl:h-[460px]">
       <Image
         src={backdropImage}
         alt="backdrop image"
         width={960}
         height={540}
-        className="object-cover w-full h-full absolute inset-0 -z-20 object-center"
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
       />
-      <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm -z-10"></div>
-      <div className="wrapper h-full flex flex-col items-start md:items-center justify-center md:flex-row md:justify-between px-4 py-4 md:py-16">
-        <div className="flex flex-col gap-1">
-          <span className="text-yellow-500 font-medium">Movie</span>
-          <h2 className="text-xl tracking-wide sm:text-2xl uppercase md:text-4xl font-semibold">
+      <div className="absolute inset-0 -z-10 bg-slate-900/60 backdrop-blur-sm"></div>
+      <div className="wrapper flex h-full flex-col items-start justify-center px-4 py-4 md:flex-row md:items-center md:justify-between md:py-16">
+        <div className="flex flex-col gap-2">
+          <span className="font-semibold text-yellow-500">{type}</span>
+          <h2 className="text-xl font-semibold uppercase tracking-wide sm:text-2xl md:text-4xl">
             {title}
+            {`(${new Date(releaseDate).getFullYear()})`}
           </h2>
-          <div className="before:content-['\'\''] before:mr-1 before:text-white !before:text-xl before:font-bold font-light text-lg md:text-xl italic after:content-['\'\''] after:ml-1 after:text-white !after:text-xl after:font-bold text-slate-400">
-            {tagline}
-          </div>
-          {Boolean(trailerUrl) && (
+          {Boolean(tagline) && (
+            <div className="!before:text-xl !after:text-xl text-lg font-light italic text-slate-300 before:mr-1 before:font-bold before:content-['\'\''] after:ml-1 after:font-bold after:content-['\'\''] md:text-xl">
+              {tagline}
+            </div>
+          )}
+          {Boolean(trailerId) && (
             <Dialog>
-              <DialogTrigger className="max-w-max">Open Trailer</DialogTrigger>
-              <DialogContent className="w-11/12 max-w-[800px] p-3">
+              <DialogTrigger className="mt-1 flex max-w-max items-center gap-1 transition-all hover:text-slate-400">
+                <Play />
+                Play Trailer
+              </DialogTrigger>
+              <DialogContent className="w-11/12 max-w-[850px] p-3">
                 <iframe
-                  className="w-full h-[400px]"
-                  src={`https://www.youtube.com/embed/${trailerUrl}`}
+                  className="h-[460px] w-full"
+                  src={`https://www.youtube.com/embed/${trailerId}`}
                   title="YouTube video player"
-                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
                   allowFullScreen
                 ></iframe>
@@ -62,7 +65,7 @@ const BannerSection: React.FC<Props> = ({
             </Dialog>
           )}
         </div>
-        <div className="flex items-center mt-2 md:mt-0 gap-2">
+        <div className="mt-2 flex items-center gap-2 md:mt-0">
           <div className="flex items-center gap-1 md:gap-2">
             <RatingStar width={50} height={50} />
             <span className="text-lg font-medium">{voteAverage}</span>

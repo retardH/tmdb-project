@@ -21,31 +21,31 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   return (
-    <nav className="bg-primary-950 relative border-b border-b-slate-500">
-      <div className="wrapper py-4 flex items-center justify-between">
-        <Menu className="md:hidden mr-auto" onClick={toggleMobileMenu} />
+    <nav className="relative border-b border-b-slate-500 bg-primary-950">
+      <div className="wrapper flex items-center justify-between py-4">
+        <Menu className="mr-auto md:hidden" onClick={toggleMobileMenu} />
         <div className="flex items-center gap-8">
           <h4
-            className="text-xl tracking-wider md:text-2xl text-yellow-500 cursor-default"
+            className="cursor-default text-xl tracking-wider text-yellow-500 md:text-2xl"
             onClick={() => router.push('/')}
           >
             T&Ms
           </h4>
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden items-center gap-6 md:flex">
             {NavLinks.map((link) => {
               return (
                 <HoverCard key={link.id} openDelay={400} closeDelay={200}>
                   <HoverCardTrigger>
-                    <span className="capitalize text-base cursor-default">
+                    <span className="cursor-default text-base capitalize">
                       {link.text}
                     </span>
                   </HoverCardTrigger>
-                  <HoverCardContent className="bg-slate-900 shadow-md z-50 flex flex-col py-1 items-start rounded-sm">
+                  <HoverCardContent className="z-50 flex flex-col items-start rounded-sm bg-slate-900 py-1 shadow-md">
                     {link.subLinks.map((subLink) => (
                       <Link
                         href={subLink.path}
                         key={subLink.path}
-                        className="capitalize px-4 py-2 w-full hover:bg-slate-800 text-sm cursor-pointer text-slate-50"
+                        className="w-full cursor-pointer px-4 py-2 text-sm capitalize text-slate-50 hover:bg-slate-800"
                       >
                         {subLink.text}
                       </Link>
@@ -72,7 +72,7 @@ const Navbar = () => {
           <SearchIcon className="ml-4" />
         </div>
       </div>
-      <div className="absolute top-full inset-x-0"></div>
+      <div className="absolute inset-x-0 top-full"></div>
       {/* <Search /> */}
       <MobileMenu isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />
     </nav>

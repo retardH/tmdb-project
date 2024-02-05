@@ -1,7 +1,7 @@
 import appAxios from './app-axios';
 
 export const getTrendingMoviesAndShows = async (
-  timeWindow: string = 'day'
+  timeWindow: string = 'day',
 ): Promise<{ page: number; results: any[] }> => {
   try {
     const { data } = await appAxios.get(`/trending/all/${timeWindow}`);

@@ -5,7 +5,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '../ui/accordion';
-import { Separator } from '../ui/separator';
 import {
   Select,
   SelectContent,
@@ -20,17 +19,17 @@ const Sort = () => {
       <Accordion type="single" collapsible>
         <AccordionItem
           value="one"
-          className="rounded-md border-b-0 shadow-sm bg-slate-900"
+          className="rounded-md border-b-0 bg-slate-900 shadow-sm"
         >
           <AccordionTrigger className="px-4">Sort</AccordionTrigger>
           {/* <Separator className="w-full" /> */}
-          <AccordionContent className="px-4 py-4 border-t border-slate-800">
+          <AccordionContent className="border-t border-slate-800 px-4 py-4">
             Sort Results By
             <Select
             //   value={trendingTimeWindow}
             //   onValueChange={(value) => setTrendingTimeWindow(value)}
             >
-              <SelectTrigger className="w-full mt-2">
+              <SelectTrigger className="mt-2 w-full">
                 <SelectValue placeholder="Sort Options" />
               </SelectTrigger>
               <SelectContent>

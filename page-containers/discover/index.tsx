@@ -1,6 +1,5 @@
 'use client';
 import { MovieAndTVShowResponse } from '@/lib/types';
-import { usePopularMoviesAndShows } from '@/services/popularMoviesAndShows';
 import React, { useEffect, useState } from 'react';
 import Card from './card';
 import { useSearchParams } from 'next/navigation';
@@ -12,13 +11,13 @@ import { Button } from '@/components/ui/button';
 
 const Discover = () => {
   const searchParams = useSearchParams();
-  const type = searchParams.get('type');
+  const type = searchParams.get('type') as 'movie' | 'tv';
   const search = searchParams.get('search');
   const [currentPage, setCurrentPage] = useState(1);
   const { data, isLoading, error } = useDiscoverLists<MovieAndTVShowResponse>(
     type as string,
     search as string,
-    currentPage
+    currentPage,
   );
   const [discoverdData, setDiscoveredData] = useState<
     MovieAndTVShowResponse['results']
@@ -30,7 +29,6 @@ const Discover = () => {
           ...data,
           index: index,
         }));
-        console.log('ddfadsf === ', results);
         return [...prevData, ...results];
       });
     }
@@ -45,22 +43,22 @@ const Discover = () => {
     return <h1>Loading...</h1>;
   }
   return (
-    <section className="my-6 md:my-10 wrapper">
-      <h1 className="text-xl md:text-2xl text-yellow-500 mb-4 capitalize">
+    <section className="wrapper my-6 md:my-10">
+      <h1 className="mb-4 text-xl capitalize text-yellow-500 md:text-2xl">
         {parsePageTitle(search!, type!)}
       </h1>
-      <div className="flex gap-8 flex-col md:flex-row">
-        <div className=" w-full md:w-[285px] flex flex-col gap-4">
+      <div className="flex flex-col gap-8 md:flex-row">
+        <div className=" flex w-full flex-col gap-4 md:w-[285px]">
           <Sort />
           <Filter />
           <Button>Search</Button>
         </div>
         <div className="flex-8">
-          <section className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6">
+          <section className="grid w-full grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
             {discoverdData.map((result, index) => {
               return (
                 <div key={result.id} className="col-span-1">
-                  <Card data={result} index={index} />
+                  <Card type={type} data={result} index={index} />
                 </div>
               );
             })}

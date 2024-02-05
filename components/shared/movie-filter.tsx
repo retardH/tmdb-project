@@ -38,11 +38,11 @@ const Filter = () => {
       <Accordion type="single" collapsible>
         <AccordionItem
           value="one"
-          className="rounded-md shadow-sm border-b-0 bg-slate-900"
+          className="rounded-md border-b-0 bg-slate-900 shadow-sm"
         >
           <AccordionTrigger className="px-4">Filters</AccordionTrigger>
           <AccordionContent className="flex flex-col border-t border-t-slate-800">
-            <div className="px-4 py-4 flex flex-col gap-2">
+            <div className="flex flex-col gap-2 px-4 py-4">
               <span className="text-base font-medium">Release Dates</span>
               <DatePicker
                 label="From"
@@ -58,14 +58,14 @@ const Filter = () => {
               />
             </div>
             <Separator className="w-full" />
-            <div className="px-4 py-4 flex flex-col gap-2">
+            <div className="flex flex-col gap-2 px-4 py-4">
               <span className="text-base font-medium">Genres</span>
               <div className="flex flex-wrap items-center gap-x-2 gap-y-3">
                 {movieGenres.map((genre) => {
                   return (
                     <div
                       key={genre.id}
-                      className="py-1 px-4 rounded-full hover:bg-sky-500 hover:border-sky-500 hover:text-slate-50 transition-all border-[0.4px] border-slate-500 cursor-default"
+                      className="cursor-default rounded-full border-[0.4px] border-slate-500 px-4 py-1 transition-all hover:border-sky-500 hover:bg-sky-500 hover:text-slate-50"
                     >
                       {genre.name}
                     </div>
@@ -74,7 +74,7 @@ const Filter = () => {
               </div>
             </div>
             <Separator className="w-full" />
-            <div className="flex flex-col gap-3 px-4 py-4 relative">
+            <div className="relative flex flex-col gap-3 px-4 py-4">
               <span className="text-base font-medium">User Votes</span>
               <Slider
                 defaultValue={[userVotes.from, userVotes.to]}
@@ -83,7 +83,7 @@ const Filter = () => {
                 className="mt-4"
                 onValueChange={handleUserVoteChange}
               />
-              <div className="flex items-center -mt-2 justify-between">
+              <div className="-mt-2 flex items-center justify-between">
                 <span>0</span>
                 <span>5</span>
                 <span>10</span>
@@ -95,7 +95,7 @@ const Filter = () => {
               />
             </div>
             <Separator className="w-full" />
-            <div className="flex flex-col gap-3 px-4 py-4 relative">
+            <div className="relative flex flex-col gap-3 px-4 py-4">
               <span className="text-base font-medium">Runtime</span>
               <Slider
                 defaultValue={[userVotes.from, userVotes.to]}
@@ -104,7 +104,7 @@ const Filter = () => {
                 className="mt-4"
                 onValueChange={handleUserVoteChange}
               />
-              <div className="flex items-center -mt-2 justify-between">
+              <div className="-mt-2 flex items-center justify-between">
                 <span>0</span>
                 <span>165</span>
                 <span>360</span>
