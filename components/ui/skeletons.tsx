@@ -8,10 +8,10 @@ export const HomeMovieCartSkeletons = () => {
         return (
           <Skeleton
             key={v}
-            className="relative rounded-md shadow-sm w-[150px] h-[225px] flex items-center justify-center"
+            className="relative flex h-[225px] w-[150px] items-center justify-center rounded-md shadow-sm"
           >
             <ImageIcon
-              className="w-[60px] h-auto"
+              className="h-auto w-[60px]"
               color="#cbd5e1"
               strokeWidth={1}
             />

@@ -26,7 +26,7 @@ export default function RootLayout({
               <div className="">{children}</div>
             </ClerkLoaded>
             <ClerkLoading>
-              <div className="w-full h-screen flex items-center justify-center">
+              <div className="flex h-screen w-full items-center justify-center">
                 <LoadingIcon
                   width={80}
                   height={80}

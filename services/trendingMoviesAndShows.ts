@@ -1,6 +1,6 @@
 import useSWR, { SWRResponse } from 'swr';
 export const useTrendingMoviesAndShows = <ApiResponse>(
-  timeWindow: string
+  timeWindow: string,
 ): SWRResponse<ApiResponse, any> => {
   setTimeout(() => {
     console.log('sd');
