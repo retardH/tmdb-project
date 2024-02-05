@@ -39,6 +39,7 @@ const Card: React.FC<Props> = ({ data, index }) => {
           alt="poster image"
           fill
           className="object-cover object-center rounded-md"
+          // placeholder="blur"
         />
         <div className="absolute left-0 bottom-0 flex items-center gap-1 bg-slate-950 py-1 px-2">
           <RatingStar />

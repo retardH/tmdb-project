@@ -34,12 +34,18 @@ const Discover = () => {
         return [...prevData, ...results];
       });
     }
-  }, [data?.page]);
+  }, [data?.page, data?.results]);
+
+  useEffect(() => {
+    return () => {
+      setDiscoveredData([]);
+    };
+  }, [search, type]);
   if (!discoverdData) {
     return <h1>Loading...</h1>;
   }
   return (
-    <section className="my-10 wrapper">
+    <section className="my-6 md:my-10 wrapper">
       <h1 className="text-xl md:text-2xl text-yellow-500 mb-4 capitalize">
         {parsePageTitle(search!, type!)}
       </h1>

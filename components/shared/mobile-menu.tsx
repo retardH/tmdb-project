@@ -8,7 +8,7 @@ const MobileMenu = ({ isOpen, setIsOpen }: Props) => {
   return (
     <div
       className={cn(
-        'h-full mobile-menu-bg backdrop-blur-md fixed top-0 w-10/12 p-4 mt-[64px] transition-all',
+        'h-full bg-slate-950/95 backdrop-blur-lg fixed top-0 w-10/12 p-4 mt-[64px] transition-all z-50',
         isOpen ? 'left-0' : '-left-[90%]'
       )}
     >

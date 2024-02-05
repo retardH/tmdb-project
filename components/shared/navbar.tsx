@@ -21,7 +21,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   return (
-    <nav className="bg-primary-950 relative">
+    <nav className="bg-primary-950 relative border-b border-b-slate-500">
       <div className="wrapper py-4 flex items-center justify-between">
         <Menu className="md:hidden mr-auto" onClick={toggleMobileMenu} />
         <div className="flex items-center gap-8">

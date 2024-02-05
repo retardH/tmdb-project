@@ -51,6 +51,9 @@ export type MovieGeneralDetails = {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  videos: {
+    results: MovieVideo[];
+  };
 };
 
 export type MovieCreditsReponse = {
@@ -86,4 +89,30 @@ export type Crew = {
   credit_id: string;
   department: string;
   job: string;
+};
+
+// {
+//   "iso_639_1": "en",
+//   "iso_3166_1": "US",
+//   "name": "Official 2021 Re-Release Trailer",
+//   "key": "jT9xbbdZJiE",
+//   "site": "YouTube",
+//   "size": 1080,
+//   "type": "Trailer",
+//   "official": true,
+//   "published_at": "2021-02-08T09:10:34.000Z",
+//   "id": "61ed89bb6d4c9700d5a0d6cd"
+// },
+
+export type MovieVideo = {
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: string;
+  id: string;
 };
