@@ -21,12 +21,16 @@ const MovieDetail = () => {
   )?.name;
 
   const backdropImage = `${imageUrlOriginal}${generalData?.backdrop_path}`;
+  const trailerUrl = generalData?.videos.results.find(
+    (r) => r.type === 'Trailer'
+  )?.key;
 
   return (
     <section>
       {generalData && creditsData && (
         <div>
           <BannerSection
+            trailerUrl={trailerUrl}
             title={generalData?.title}
             tagline={generalData?.tagline}
             backdropImage={backdropImage}
