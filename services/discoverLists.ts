@@ -3,7 +3,7 @@ import useSWR, { SWRResponse } from 'swr';
 export const useDiscoverLists = <ApiResponse>(
   type: string,
   search: string,
-  page?: number
+  page = 1
 ): SWRResponse<ApiResponse, any> => {
-  return useSWR(`/${type}/${search}`);
+  return useSWR(`/${type}/${search}?page=${page}`);
 };

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { inter } from '@/components/ui/fonts';
 import './globals.css';
-import Navbar from '@/components/layout/navbar';
+import Navbar from '@/components/shared/navbar';
 import { ClerkLoaded, ClerkLoading, ClerkProvider } from '@clerk/nextjs';
 import Providers from './providers';
 import { LoadingIcon } from '@/components/icons';
@@ -19,11 +19,11 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={`${inter.className} dark`}>
           <Providers>
             <ClerkLoaded>
               <Navbar />
-              <div className="wrapper">{children}</div>
+              <div className="">{children}</div>
             </ClerkLoaded>
             <ClerkLoading>
               <div className="w-full h-screen flex items-center justify-center">

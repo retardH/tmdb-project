@@ -18,10 +18,13 @@ const Sort = () => {
   return (
     <div>
       <Accordion type="single" collapsible>
-        <AccordionItem value="one" className="rounded-md shadow-sm bg-white">
+        <AccordionItem
+          value="one"
+          className="rounded-md border-b-0 shadow-sm bg-slate-900"
+        >
           <AccordionTrigger className="px-4">Sort</AccordionTrigger>
-          <Separator className="w-full" />
-          <AccordionContent className="px-4 py-4">
+          {/* <Separator className="w-full" /> */}
+          <AccordionContent className="px-4 py-4 border-t border-slate-800">
             Sort Results By
             <Select
             //   value={trendingTimeWindow}

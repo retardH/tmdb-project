@@ -12,7 +12,7 @@
         @apply box-border m-0 p-0;
     }
     body {
-        @apply text-slate-950 bg-slate-100;
+        @apply bg-slate-950 text-slate-50;
     }
 
     nav {
@@ -20,11 +20,11 @@
     }
 
     h1 {
-        @apply font-bold;
+        @apply font-semibold;
     }
 
     h2,h3,h4,h5,h6 {
-        @apply font-semibold;
+        @apply font-medium;
     }
 
     .shimmer {
@@ -32,7 +32,7 @@
     }
 
     .wrapper {
-        @apply w-full px-6 md:w-11/12 xl:w-10/12 max-w-[1560px] mx-auto;
+        @apply w-full px-4 sm:px-6 md:w-11/12 lg:w-10/12 max-w-[1560px] mx-auto;
     }
 }
 
