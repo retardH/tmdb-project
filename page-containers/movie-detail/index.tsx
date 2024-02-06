@@ -1,6 +1,6 @@
 'use client';
 import { imageUrlOriginal } from '@/lib/constants';
-import { MovieCreditsReponse, MovieGeneralDetails } from '@/lib/types';
+import { CreditsResponse, MovieGeneralDetails } from '@/lib/types';
 import { formatDate, formatRuntime } from '@/lib/utils';
 import { useMovieCasts, useMovieGeneralDetails } from '@/services/movieDetails';
 import Image from 'next/image';
@@ -17,7 +17,7 @@ const MovieDetail = () => {
   const { data: generalData, isLoading: isGeneralDataLoading } =
     useMovieGeneralDetails<MovieGeneralDetails>(+id);
   const { data: creditsData, isLoading: isCreditsDataLoading } =
-    useMovieCasts<MovieCreditsReponse>(+id);
+    useMovieCasts<CreditsResponse>(+id);
 
   const directorName = creditsData?.crew.find(
     (people) => people.job === 'Director',
@@ -60,12 +60,6 @@ const MovieDetail = () => {
                   {generalData?.status}
                 </div>
               </div>
-              {/* <div className="flex items-center">
-                <span>{generalData?.release_date}</span>
-                <span className="flex items-center justify-center before:text-xl before:content-['.'] before:mb-2 before:ml-3 before:mr-3 before:font-bold before:text-white">
-                  {generalData?.runtime} minutes
-                </span>
-              </div> */}
               <div className="my-2">
                 <span className="mb-2 font-semibold">Overview</span>
                 <p className="text-sm leading-relaxed text-slate-300 md:text-base">

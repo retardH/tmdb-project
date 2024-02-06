@@ -56,7 +56,7 @@ export type MovieGeneralDetails = {
   };
 };
 
-export type MovieCreditsReponse = {
+export type CreditsResponse = {
   id: number;
   cast: Cast[];
   crew: Crew[];
@@ -156,4 +156,5 @@ export type TvShowsGeneralDetails = {
   videos: {
     results: Video[];
   };
+  credits?: CreditsResponse;
 };

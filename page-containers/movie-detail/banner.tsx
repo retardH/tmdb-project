@@ -32,6 +32,7 @@ const BannerSection: React.FC<Props> = ({
         alt="backdrop image"
         width={960}
         height={540}
+        priority={true}
         className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
       />
       <div className="absolute inset-0 -z-10 bg-slate-900/60 backdrop-blur-sm"></div>

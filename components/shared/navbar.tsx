@@ -18,11 +18,12 @@ const Navbar = () => {
   const router = useRouter();
   const { isSignedIn, user } = useUser();
   console.log('user', user);
+  const [searchBoxShow, setSearchBoxShow] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   return (
-    <nav className="relative border-b border-b-slate-500 bg-primary-950">
-      <div className="wrapper flex items-center justify-between py-4">
+    <nav className="border-b border-b-slate-500 bg-primary-950">
+      <div className="wrapper relative flex items-center justify-between py-4">
         <Menu className="mr-auto md:hidden" onClick={toggleMobileMenu} />
         <div className="flex items-center gap-8">
           <h4
@@ -69,11 +70,14 @@ const Navbar = () => {
               </Button>
             )}
           </div>
-          <SearchIcon className="ml-4" />
+          <SearchIcon
+            className="ml-4"
+            onClick={() => setSearchBoxShow(!searchBoxShow)}
+          />
         </div>
+        {searchBoxShow && <Search />}
       </div>
       <div className="absolute inset-x-0 top-full"></div>
-      {/* <Search /> */}
       <MobileMenu isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />
     </nav>
   );
