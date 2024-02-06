@@ -8,6 +8,7 @@ import { parsePageTitle } from '@/lib/utils';
 import Sort from '@/components/shared/sort';
 import Filter from '@/components/shared/movie-filter';
 import { Button } from '@/components/ui/button';
+import { LoadingIcon } from '@/components/icons';
 
 const Discover = () => {
   const searchParams = useSearchParams();
@@ -39,9 +40,6 @@ const Discover = () => {
       setDiscoveredData([]);
     };
   }, [search, type]);
-  if (!discoverdData) {
-    return <h1>Loading...</h1>;
-  }
   return (
     <section className="wrapper my-6 md:my-10">
       <h1 className="mb-4 text-xl capitalize text-yellow-500 md:text-2xl">
@@ -54,22 +52,28 @@ const Discover = () => {
           <Button>Search</Button>
         </div>
         <div className="flex-8">
-          <section className="grid w-full grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
-            {discoverdData.map((result, index) => {
-              return (
-                <div key={result.id} className="col-span-1">
-                  <Card type={type} data={result} index={index} />
-                </div>
-              );
-            })}
-            <Button
-              onClick={() => {
-                setCurrentPage((page) => page + 1);
-              }}
-            >
-              Load More
-            </Button>
-          </section>
+          {discoverdData.length < 1 ? (
+            <div className="flex w-full items-center justify-center py-20">
+              <LoadingIcon width={80} height={80} />
+            </div>
+          ) : (
+            <section className="grid w-full grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
+              {discoverdData.map((result, index) => {
+                return (
+                  <div key={result.id} className="col-span-1">
+                    <Card type={type} data={result} index={index} />
+                  </div>
+                );
+              })}
+              <Button
+                onClick={() => {
+                  setCurrentPage((page) => page + 1);
+                }}
+              >
+                Load More
+              </Button>
+            </section>
+          )}
         </div>
       </div>
     </section>

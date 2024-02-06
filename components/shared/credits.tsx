@@ -1,11 +1,11 @@
 import { HomeMovieCartSkeletons } from '@/components/ui/skeletons';
 import { imageUrlOriginal } from '@/lib/constants';
-import { MovieCreditsReponse } from '@/lib/types';
+import { CreditsResponse } from '@/lib/types';
 import Image from 'next/image';
 import React from 'react';
 
 interface Props {
-  casts: MovieCreditsReponse['cast'] | undefined;
+  casts: CreditsResponse['cast'] | undefined;
   isLoading: boolean;
 }
 const Credits: React.FC<Props> = ({ casts, isLoading }) => {
@@ -16,7 +16,7 @@ const Credits: React.FC<Props> = ({ casts, isLoading }) => {
       ) : (
         casts && (
           <div className="flex items-center gap-8">
-            {casts.slice(0, 20).map((cast) => {
+            {casts.map((cast) => {
               return (
                 <div
                   key={cast.cast_id}
