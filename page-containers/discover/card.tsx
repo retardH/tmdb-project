@@ -4,6 +4,7 @@ import { imageUrlOriginal } from '@/lib/constants';
 import { MovieOrTVShow } from '@/lib/types';
 import { format } from 'date-fns';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
@@ -32,30 +33,32 @@ const Card: React.FC<Props> = ({ data, index, type }) => {
       }}
       viewport={{ amount: 0, once: true }}
       className="w-full cursor-default"
-      onClick={() => router.push(`/${type}/${data.id}`)}
+      // onClick={() => router.push(`/${type}/${data.id}`)}
     >
-      <figure className="relative h-[240px] w-full sm:h-[300px] md:h-[260px] xl:h-[240px]">
-        <Image
-          src={`${imageUrlOriginal}${data.poster_path}`}
-          alt="poster image"
-          fill
-          sizes="50vw, (min-width: 768px) 30vw"
-          className="rounded-md object-cover object-center"
-          // placeholder="blur"
-        />
-        <div className="absolute bottom-0 left-0 flex items-center gap-1 bg-slate-950 px-2 py-1">
-          <RatingStar />
-          <span className="text-sm">{data.vote_average.toFixed(1)}</span>
+      <Link href={`/${type}/${data.id}`}>
+        <figure className="relative h-[240px] w-full sm:h-[300px] md:h-[260px] xl:h-[240px]">
+          <Image
+            src={`${imageUrlOriginal}${data.poster_path}`}
+            alt="poster image"
+            fill
+            sizes="50vw, (min-width: 768px) 30vw"
+            className="rounded-md object-cover object-center"
+            // placeholder="blur"
+          />
+          <div className="absolute bottom-0 left-0 flex items-center gap-1 bg-slate-950 px-2 py-1">
+            <RatingStar />
+            <span className="text-sm">{data.vote_average.toFixed(1)}</span>
+          </div>
+        </figure>
+        <div className="flex flex-col gap-0 py-2 pt-3">
+          <h4 className="text-medium w-full overflow-hidden text-ellipsis whitespace-nowrap text-sm capitalize md:text-base">
+            {data.title ?? data.name}
+          </h4>
+          <span className="text-sm text-primary-500">
+            {format(new Date(data.release_date ?? data.first_air_date), 'PP')}
+          </span>
         </div>
-      </figure>
-      <div className="flex flex-col gap-0 py-2 pt-3">
-        <h4 className="text-medium w-full overflow-hidden text-ellipsis whitespace-nowrap text-sm capitalize md:text-base">
-          {data.title ?? data.name}
-        </h4>
-        <span className="text-sm text-primary-500">
-          {format(new Date(data.release_date ?? data.first_air_date), 'PP')}
-        </span>
-      </div>
+      </Link>
     </MotionDiv>
   );
 };

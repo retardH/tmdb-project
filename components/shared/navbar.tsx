@@ -1,6 +1,6 @@
 'use client';
 import { NavLinks } from '@/lib/constants';
-import { Menu, SearchIcon } from 'lucide-react';
+import { Menu, SearchIcon, X } from 'lucide-react';
 import {
   HoverCard,
   HoverCardContent,
@@ -27,7 +27,7 @@ const Navbar = () => {
         <Menu className="mr-auto md:hidden" onClick={toggleMobileMenu} />
         <div className="flex items-center gap-8">
           <h4
-            className="cursor-default text-xl tracking-wider text-yellow-500 md:text-2xl"
+            className="cursor-default text-xl font-bold italic tracking-wider text-yellow-500 md:text-2xl"
             onClick={() => router.push('/')}
           >
             T&Ms
@@ -70,12 +70,19 @@ const Navbar = () => {
               </Button>
             )}
           </div>
-          <SearchIcon
-            className="ml-4"
-            onClick={() => setSearchBoxShow(!searchBoxShow)}
-          />
+          {searchBoxShow ? (
+            <X
+              className="ml-4 cursor-pointer"
+              onClick={() => setSearchBoxShow(!searchBoxShow)}
+            />
+          ) : (
+            <SearchIcon
+              className="ml-4 cursor-pointer transition-all hover:scale-110"
+              onClick={() => setSearchBoxShow(!searchBoxShow)}
+            />
+          )}
         </div>
-        {searchBoxShow && <Search />}
+        {searchBoxShow && <Search setShow={setSearchBoxShow} />}
       </div>
       <div className="absolute inset-x-0 top-full"></div>
       <MobileMenu isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />

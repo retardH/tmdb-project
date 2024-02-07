@@ -11,15 +11,14 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import Popular from './popular';
-import { HomeMovieCartSkeletons } from '@/components/ui/skeletons';
 
 const Home = () => {
   const [trendingTimeWindow, setTrendingTimeWindow] = useState<string>('day');
   const [popular, setPopular] = useState<string>('movie');
   return (
-    <div className="wrapper">
+    <div className="w-full">
       <HeroSection imagePath="/f1AQhx6ZfGhPZFTVKgxG91PhEYc.jpg" />
-      <section className="my-10">
+      <section className="wrapper my-10">
         <div className="mb-4 flex items-center gap-4">
           <h2 className="text-xl text-yellow-500 lg:text-2xl">Trending</h2>
           <Select
@@ -42,7 +41,7 @@ const Home = () => {
           <ScrollBar orientation="horizontal" />
         </ScrollArea>
       </section>
-      <section className="my-10">
+      <section className="wrapper my-10">
         <div className="mb-4 flex items-center gap-4">
           <h2 className="text-xl text-yellow-500 lg:text-2xl">
             What&apos;s Popular

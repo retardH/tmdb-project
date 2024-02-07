@@ -7,6 +7,7 @@
     background-color: rgba(15, 23, 42, 0.98);
 }
 
+
 @layer base {
     * {
         @apply box-border m-0 p-0;
@@ -32,7 +33,7 @@
     }
 
     .wrapper {
-        @apply w-full px-4 sm:px-6 md:w-11/12 lg:w-10/12 max-w-[1560px] mx-auto;
+        @apply w-full md:w-11/12 lg:w-10/12 max-w-[1560px] mx-auto;
     }
 }
 

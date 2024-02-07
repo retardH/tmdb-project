@@ -1,6 +1,6 @@
-import type { Metadata } from 'next';
-import { inter } from '@/components/ui/fonts';
 import './globals.css';
+import { Poppins } from 'next/font/google';
+import type { Metadata } from 'next';
 import Navbar from '@/components/shared/navbar';
 import { ClerkLoaded, ClerkLoading, ClerkProvider } from '@clerk/nextjs';
 import Providers from './providers';
@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   description: 'Search and Discover various tv shows and movies.',
 };
 
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+  variable: '--main-font',
+});
+
 export default function RootLayout({
   children,
 }: {
@@ -19,7 +25,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${inter.className} dark`}>
+        <body className={`${poppins.className} dark`}>
           <Providers>
             <ClerkLoaded>
               <Navbar />
