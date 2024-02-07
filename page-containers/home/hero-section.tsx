@@ -17,7 +17,7 @@ const HeroSection: React.FC<Props> = ({ imagePath }) => {
       />
       <div className="absolute inset-0 -z-10 bg-slate-900/60 backdrop-blur-sm"></div>
       <div className="flex flex-col justify-center p-6 md:p-14">
-        <h1 className="text-3xl text-slate-50 md:text-5xl lg:text-6xl">
+        <h1 className="text-3xl text-yellow-500 md:text-5xl lg:text-6xl">
           Welcome.
         </h1>
         <h1 className="text-xl text-slate-50 lg:text-3xl">

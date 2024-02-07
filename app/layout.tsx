@@ -1,21 +1,16 @@
 import './globals.css';
-import { Poppins } from 'next/font/google';
 import type { Metadata } from 'next';
 import Navbar from '@/components/shared/navbar';
 import { ClerkLoaded, ClerkLoading, ClerkProvider } from '@clerk/nextjs';
 import Providers from './providers';
 import { LoadingIcon } from '@/components/icons';
+import { poppins } from '@/components/ui/fonts';
+import Footer from '@/components/shared/footer';
 
 export const metadata: Metadata = {
   title: 'T&Ms',
   description: 'Search and Discover various tv shows and movies.',
 };
-
-const poppins = Poppins({
-  weight: ['400', '500', '600', '700', '800'],
-  subsets: ['latin'],
-  variable: '--main-font',
-});
 
 export default function RootLayout({
   children,
@@ -30,6 +25,7 @@ export default function RootLayout({
             <ClerkLoaded>
               <Navbar />
               <div className="">{children}</div>
+              <Footer />
             </ClerkLoaded>
             <ClerkLoading>
               <div className="flex h-screen w-full items-center justify-center">

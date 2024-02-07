@@ -33,7 +33,7 @@
     }
 
     .wrapper {
-        @apply w-full md:w-11/12 lg:w-10/12 max-w-[1560px] mx-auto;
+        @apply w-full px-2.5 md:px-0 md:w-11/12 lg:w-10/12 max-w-[1560px] mx-auto;
     }
 }
 

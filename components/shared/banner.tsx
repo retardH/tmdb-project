@@ -33,7 +33,7 @@ const BannerSection: React.FC<Props> = ({
         height={540}
         className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
       />
-      <div className="absolute inset-0 -z-10 bg-slate-900/70 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 -z-10 bg-slate-950/80 backdrop-blur-sm"></div>
       <div className="wrapper flex h-full flex-col items-start justify-center px-4 py-4 md:flex-row md:items-center md:justify-between md:py-16">
         <div className="flex flex-col gap-2">
           <span className="font-semibold text-yellow-500">{type}</span>
@@ -42,7 +42,7 @@ const BannerSection: React.FC<Props> = ({
             {`(${new Date(releaseDate).getFullYear()})`}
           </h2>
           {Boolean(tagline) && (
-            <div className="!before:text-xl !after:text-xl text-lg font-light italic text-slate-300 before:mr-1 before:font-bold before:content-['\'\''] after:ml-1 after:font-bold after:content-['\'\''] md:text-xl">
+            <div className="!before:text-xl !after:text-xl text-base font-light italic text-slate-300 before:mr-1 before:font-bold before:content-['\'\''] after:ml-1 after:font-bold after:content-['\'\''] sm:text-lg md:text-xl">
               {tagline}
             </div>
           )}
