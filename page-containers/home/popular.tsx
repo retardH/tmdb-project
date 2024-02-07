@@ -1,5 +1,5 @@
 import MovieCard from '@/page-containers/home/card';
-import { HomeMovieCartSkeletons } from '@/components/ui/skeletons';
+import { HomeMovieCartSkeletons } from '@/components/shared/skeletons';
 import { usePopularMoviesAndShows } from '@/services/popularMoviesAndShows';
 import { useTrendingMoviesAndShows } from '@/services/trendingMoviesAndShows';
 import React from 'react';
@@ -18,6 +18,8 @@ const Popular: React.FC<Props> = ({ type }) => {
       {data?.results?.map((result: any) => {
         return (
           <MovieCard
+            type={type}
+            id={result.id}
             key={result.id}
             posterPath={result.poster_path}
             title={result.name ?? result.title}

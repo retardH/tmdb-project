@@ -5,7 +5,6 @@ import { MovieOrTVShow } from '@/lib/types';
 import { format } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import React from 'react';
 
 interface Props {
@@ -20,7 +19,6 @@ const variants = {
 };
 
 const Card: React.FC<Props> = ({ data, index, type }) => {
-  const router = useRouter();
   return (
     <MotionDiv
       variants={variants}
@@ -33,17 +31,15 @@ const Card: React.FC<Props> = ({ data, index, type }) => {
       }}
       viewport={{ amount: 0, once: true }}
       className="w-full cursor-default"
-      // onClick={() => router.push(`/${type}/${data.id}`)}
     >
       <Link href={`/${type}/${data.id}`}>
-        <figure className="relative h-[240px] w-full sm:h-[300px] md:h-[260px] xl:h-[240px]">
+        <figure className="relative h-[240px] w-full sm:h-[300px] md:h-[260px]">
           <Image
             src={`${imageUrlOriginal}${data.poster_path}`}
             alt="poster image"
             fill
             sizes="50vw, (min-width: 768px) 30vw"
             className="rounded-md object-cover object-center"
-            // placeholder="blur"
           />
           <div className="absolute bottom-0 left-0 flex items-center gap-1 bg-slate-950 px-2 py-1">
             <RatingStar />

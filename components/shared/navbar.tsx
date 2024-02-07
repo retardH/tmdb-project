@@ -8,30 +8,36 @@ import {
 } from '@radix-ui/react-hover-card';
 import { useState } from 'react';
 import MobileMenu from './mobile-menu';
-import { UserButton, useAuth, useUser } from '@clerk/nextjs';
+import { UserButton, useUser } from '@clerk/nextjs';
 import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Search from './search';
+import Hamburger from 'hamburger-react';
 
 const Navbar = () => {
   const router = useRouter();
   const { isSignedIn, user } = useUser();
-  console.log('user', user);
   const [searchBoxShow, setSearchBoxShow] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  console.log('user', user);
   return (
     <nav className="border-b border-b-slate-500 bg-primary-950">
       <div className="wrapper relative flex items-center justify-between py-4">
-        <Menu className="mr-auto md:hidden" onClick={toggleMobileMenu} />
+        <div className="mr-auto md:hidden">
+          <Hamburger
+            toggled={isMobileMenuOpen}
+            toggle={setIsMobileMenuOpen}
+            size={28}
+            distance="sm"
+          />
+        </div>
         <div className="flex items-center gap-8">
-          <h4
-            className="cursor-default text-xl font-bold italic tracking-wider text-yellow-500 md:text-2xl"
-            onClick={() => router.push('/')}
-          >
-            T&Ms
-          </h4>
+          <Link href="/">
+            <h4 className="cursor-default text-xl font-bold italic tracking-wider text-yellow-500 md:text-2xl">
+              T&Ms
+            </h4>
+          </Link>
           <div className="hidden items-center gap-6 md:flex">
             {NavLinks.map((link) => {
               return (
@@ -74,10 +80,12 @@ const Navbar = () => {
             <X
               className="ml-4 cursor-pointer"
               onClick={() => setSearchBoxShow(!searchBoxShow)}
+              size={28}
             />
           ) : (
             <SearchIcon
               className="ml-4 cursor-pointer transition-all hover:scale-110"
+              size={28}
               onClick={() => setSearchBoxShow(!searchBoxShow)}
             />
           )}

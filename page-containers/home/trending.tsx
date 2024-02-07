@@ -1,6 +1,6 @@
 'use client';
 import MovieCard from '@/page-containers/home/card';
-import { HomeMovieCartSkeletons } from '@/components/ui/skeletons';
+import { HomeMovieCartSkeletons } from '@/components/shared/skeletons';
 import { getTrendingMoviesAndShows } from '@/lib/data';
 import { MovieAndTVShowResponse } from '@/lib/types';
 import { useTrendingMoviesAndShows } from '@/services/trendingMoviesAndShows';
@@ -22,6 +22,8 @@ const Trending: React.FC<Props> = ({ timeWindow }) => {
       {data?.results?.map((result) => {
         return (
           <MovieCard
+            type={result.media_type}
+            id={result.id}
             key={result.id}
             posterPath={result.poster_path}
             title={result.name ?? result.title}

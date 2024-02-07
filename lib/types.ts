@@ -54,6 +54,7 @@ export type MovieGeneralDetails = {
   videos: {
     results: Video[];
   };
+  credits?: CreditsResponse;
 };
 
 export type CreditsResponse = {
@@ -157,4 +158,21 @@ export type TvShowsGeneralDetails = {
     results: Video[];
   };
   credits?: CreditsResponse;
+};
+
+export type People = {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  known_for: MovieOrTVShow[];
+};
+
+export type PopularPeopleResponse = {
+  page: number;
+  results: People[];
 };

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 import RatingCircle from '../../components/shared/rating-circle';
 import { RatingStar } from '@/components/icons';
+import Link from 'next/link';
 
 interface Props {
   posterPath: string;
@@ -10,6 +11,8 @@ interface Props {
   voteCount: number;
   overview: string;
   date: string;
+  type: string;
+  id: number;
 }
 const MovieCard: React.FC<Props> = ({
   posterPath,
@@ -17,9 +20,11 @@ const MovieCard: React.FC<Props> = ({
   voteCount,
   overview,
   date,
+  type,
+  id,
 }) => {
   return (
-    <div className="flex flex-col items-start gap-1">
+    <Link href={`${type}/${id}`} className="flex flex-col items-start gap-1">
       <figure className="relative mb-3 h-[200px] w-[135px] rounded-md md:h-[225px] md:w-[145px]">
         <Image
           src={`${imageUrlOriginal}${posterPath}`}
@@ -37,7 +42,7 @@ const MovieCard: React.FC<Props> = ({
         {title}
       </h2>
       <span className="text-sm text-primary-500">{date}</span>
-    </div>
+    </Link>
   );
 };
 

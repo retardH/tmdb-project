@@ -45,27 +45,31 @@ const Discover = () => {
 
   useEffect(() => {
     if (inView) {
-      setCurrentPage((page) => page + 1);
+      setCurrentPage((page) => {
+        if (page > 100) return page;
+        return page + 1;
+      });
     }
   }, [inView]);
+
   return (
-    <section className="wrapper my-6 md:my-10">
+    <section className="wrapper my-6 min-h-[95dvh] md:my-10">
       <h1 className="mb-4 text-xl capitalize text-yellow-500 md:text-2xl">
         {parsePageTitle(search!, type!)}
       </h1>
       <div className="flex flex-col gap-8 md:flex-row">
-        <div className=" flex w-full flex-col gap-4 md:w-[285px]">
+        {/* <div className=" flex w-full flex-col gap-4 md:w-[285px]">
           <Sort />
           <Filter />
           <Button>Search</Button>
-        </div>
+        </div> */}
         <div className="flex-8">
           {discoverdData.length < 1 ? (
             <div className="flex w-full items-center justify-center py-20">
               <LoadingIcon width={80} height={80} />
             </div>
           ) : (
-            <section className="grid w-full grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
+            <section className="grid w-full grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6">
               {discoverdData.map((result, index) => {
                 return (
                   <div key={index} className="col-span-1">
@@ -73,12 +77,14 @@ const Discover = () => {
                   </div>
                 );
               })}
-              <div
-                ref={ref}
-                className="flex w-full items-center justify-center"
-              >
-                <LoadingIcon width={50} height={50} />
-              </div>
+              {currentPage < 100 && (
+                <div
+                  ref={ref}
+                  className="col-span-full flex w-full items-center justify-center"
+                >
+                  <LoadingIcon width={50} height={50} />
+                </div>
+              )}
             </section>
           )}
         </div>

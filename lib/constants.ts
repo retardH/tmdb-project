@@ -48,7 +48,7 @@ export const NavLinks = [
     text: 'people',
     subLinks: [
       {
-        path: '/popular-people',
+        path: '/people',
         text: 'popular people',
       },
     ],
