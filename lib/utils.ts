@@ -42,13 +42,3 @@ export function formatRuntime(time: number) {
   }
   return runtime;
 }
-
-export function debounce(func: Function, timeout = 500) {
-  let timer: NodeJS.Timeout;
-  return (...args: any[]) => {
-    clearTimeout(timer);
-    setTimeout(() => {
-      func.apply(this, args);
-    }, timeout);
-  };
-}

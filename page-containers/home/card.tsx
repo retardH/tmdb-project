@@ -20,7 +20,7 @@ const MovieCard: React.FC<Props> = ({
 }) => {
   return (
     <div className="flex flex-col items-start gap-1">
-      <figure className="relative mb-3 h-[225px] w-[145px] rounded-md">
+      <figure className="relative mb-3 h-[200px] w-[135px] rounded-md md:h-[225px] md:w-[145px]">
         <Image
           src={`${imageUrlOriginal}${posterPath}`}
           alt="trending image"

@@ -6,7 +6,7 @@ import { useMovieCasts, useMovieGeneralDetails } from '@/services/movieDetails';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import React from 'react';
-import BannerSection from './banner';
+import BannerSection from '../../components/shared/banner';
 import { Separator } from '@/components/ui/separator';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import Credits from '../../components/shared/credits';
@@ -104,7 +104,6 @@ const MovieDetail = () => {
             <h4 className="text-lg md:text-xl">Top Billed Casts</h4>
             <ScrollArea className="w-full whitespace-nowrap rounded-md">
               <div className="py-4">
-                {/* <Trending timeWindow={trendingTimeWindow} /> */}
                 <Credits
                   casts={creditsData?.cast}
                   isLoading={isCreditsDataLoading}

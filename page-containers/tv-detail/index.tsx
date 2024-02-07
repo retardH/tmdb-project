@@ -3,7 +3,7 @@ import { TvShowsGeneralDetails } from '@/lib/types';
 import { useTvShowGeneralDetails } from '@/services/tvShowDetails';
 import { useParams } from 'next/navigation';
 import React from 'react';
-import BannerSection from '../movie-detail/banner';
+import BannerSection from '../../components/shared/banner';
 import { imageUrlOriginal } from '@/lib/constants';
 import Image from 'next/image';
 import { formatDate, formatRuntime } from '@/lib/utils';
@@ -77,7 +77,7 @@ const TvShowDetailsPage = () => {
                   {generalData.networks.map((n, index) => {
                     return (
                       <span key={n.id}>
-                        {n.name} {`(${n.origin_country})`}
+                        {n.name}
                         {index !== generalData.networks.length - 1 && ', '}
                       </span>
                     );

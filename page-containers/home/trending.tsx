@@ -18,7 +18,7 @@ const Trending: React.FC<Props> = ({ timeWindow }) => {
   }
 
   return (
-    <div className="flex items-center gap-8">
+    <div className="flex items-center gap-4 md:gap-8">
       {data?.results?.map((result) => {
         return (
           <MovieCard

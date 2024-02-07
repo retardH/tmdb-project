@@ -1,6 +1,5 @@
 import { RatingStar } from '@/components/icons';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
 import React from 'react';
 import { Play } from 'lucide-react';
@@ -32,10 +31,9 @@ const BannerSection: React.FC<Props> = ({
         alt="backdrop image"
         width={960}
         height={540}
-        priority={true}
         className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
       />
-      <div className="absolute inset-0 -z-10 bg-slate-900/60 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 -z-10 bg-slate-900/70 backdrop-blur-sm"></div>
       <div className="wrapper flex h-full flex-col items-start justify-center px-4 py-4 md:flex-row md:items-center md:justify-between md:py-16">
         <div className="flex flex-col gap-2">
           <span className="font-semibold text-yellow-500">{type}</span>
@@ -56,7 +54,7 @@ const BannerSection: React.FC<Props> = ({
               </DialogTrigger>
               <DialogContent className="w-11/12 max-w-[850px] p-3">
                 <iframe
-                  className="h-[460px] w-full"
+                  className="h-[200px] w-full md:h-[460px]"
                   src={`https://www.youtube.com/embed/${trailerId}`}
                   title="YouTube video player"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
@@ -66,12 +64,12 @@ const BannerSection: React.FC<Props> = ({
             </Dialog>
           )}
         </div>
-        <div className="mt-2 flex items-center gap-2 md:mt-0">
-          <div className="flex items-center gap-1 md:gap-2">
+        <div className="mt-2 flex items-center gap-4 md:mt-0">
+          <div className="flex items-center gap-0.5 md:gap-1.5">
             <RatingStar width={50} height={50} />
             <span className="text-lg font-medium">{voteAverage}</span>
           </div>
-          <Separator orientation="vertical" />
+          {/* <Separator orientation="vertical" /> */}
           <div className="flex flex-col gap-0 text-sm">
             <span>{voteCount}</span>
             <span>Votes</span>

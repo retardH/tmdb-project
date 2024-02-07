@@ -9,13 +9,15 @@ import Sort from '@/components/shared/sort';
 import Filter from '@/components/shared/movie-filter';
 import { Button } from '@/components/ui/button';
 import { LoadingIcon } from '@/components/icons';
+import { useInView } from 'react-intersection-observer';
 
 const Discover = () => {
   const searchParams = useSearchParams();
+  const { ref, inView } = useInView();
   const type = searchParams.get('type') as 'movie' | 'tv';
   const search = searchParams.get('search');
   const [currentPage, setCurrentPage] = useState(1);
-  const { data, isLoading, error } = useDiscoverLists<MovieAndTVShowResponse>(
+  const { data } = useDiscoverLists<MovieAndTVShowResponse>(
     type as string,
     search as string,
     currentPage,
@@ -40,6 +42,12 @@ const Discover = () => {
       setDiscoveredData([]);
     };
   }, [search, type]);
+
+  useEffect(() => {
+    if (inView) {
+      setCurrentPage((page) => page + 1);
+    }
+  }, [inView]);
   return (
     <section className="wrapper my-6 md:my-10">
       <h1 className="mb-4 text-xl capitalize text-yellow-500 md:text-2xl">
@@ -60,18 +68,17 @@ const Discover = () => {
             <section className="grid w-full grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
               {discoverdData.map((result, index) => {
                 return (
-                  <div key={result.id} className="col-span-1">
+                  <div key={index} className="col-span-1">
                     <Card type={type} data={result} index={index} />
                   </div>
                 );
               })}
-              <Button
-                onClick={() => {
-                  setCurrentPage((page) => page + 1);
-                }}
+              <div
+                ref={ref}
+                className="flex w-full items-center justify-center"
               >
-                Load More
-              </Button>
+                <LoadingIcon width={50} height={50} />
+              </div>
             </section>
           )}
         </div>
