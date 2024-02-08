@@ -15,6 +15,7 @@ import Popular from './popular';
 const Home = () => {
   const [trendingTimeWindow, setTrendingTimeWindow] = useState<string>('day');
   const [popular, setPopular] = useState<string>('movie');
+  console.log(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
   return (
     <div className="w-full">
       <HeroSection imagePath="/f1AQhx6ZfGhPZFTVKgxG91PhEYc.jpg" />
