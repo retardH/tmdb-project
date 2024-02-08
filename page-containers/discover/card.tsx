@@ -2,10 +2,12 @@ import { RatingStar } from '@/components/icons';
 import MotionDiv from '@/components/shared/motion-div';
 import { imageUrlOriginal } from '@/lib/constants';
 import { MovieOrTVShow } from '@/lib/types';
+import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
+import { ImageIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 
 interface Props {
   data: MovieOrTVShow;
@@ -19,6 +21,7 @@ const variants = {
 };
 
 const Card: React.FC<Props> = ({ data, index, type }) => {
+  const [imgLoaded, setImgLoaded] = useState<boolean>(false);
   return (
     <MotionDiv
       variants={variants}
@@ -33,14 +36,27 @@ const Card: React.FC<Props> = ({ data, index, type }) => {
       className="w-full cursor-default"
     >
       <Link href={`/${type}/${data.id}`}>
-        <figure className="relative h-[240px] w-full sm:h-[300px] md:h-[260px]">
+        <figure className="relative flex h-[240px] w-full items-center justify-center bg-slate-900 sm:h-[300px] md:h-[280px]">
           <Image
             src={`${imageUrlOriginal}${data.poster_path}`}
             alt="poster image"
             fill
             sizes="50vw, (min-width: 768px) 30vw"
-            className="rounded-md object-cover object-center"
+            className={cn(
+              'rounded-md object-cover object-center',
+              imgLoaded ? 'opacity-100' : 'opacity-0',
+            )}
+            onLoad={() => {
+              setImgLoaded(true);
+            }}
           />
+          {!imgLoaded && (
+            <ImageIcon
+              className="h-auto w-[60px]"
+              color="#cbd5e1"
+              strokeWidth={1}
+            />
+          )}
           <div className="absolute bottom-0 left-0 flex items-center gap-1 bg-slate-950 px-2 py-1">
             <RatingStar />
             <span className="text-sm">{data.vote_average.toFixed(1)}</span>

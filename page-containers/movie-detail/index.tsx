@@ -22,6 +22,9 @@ const MovieDetail = () => {
 
   const backdropImage = `${imageUrlOriginal}${data?.backdrop_path}`;
   const trailerId = data?.videos.results.find((r) => r.type === 'Trailer')?.key;
+  const certification = data?.release_dates.results.find(
+    (r) => r.iso_3166_1 === 'US',
+  )?.release_dates[0].certification;
 
   return (
     <section>
@@ -51,8 +54,8 @@ const MovieDetail = () => {
               </figure>
               <section className="flex-3 flex flex-col gap-3.5">
                 <div className="flex items-center gap-4">
-                  <div className="max-w-min rounded-md border border-slate-600 px-2 py-1 text-center text-sm uppercase md:text-base">
-                    PG-13
+                  <div className="min-w-[40px] max-w-min rounded-md border border-slate-600 px-2 py-1 text-center text-sm uppercase md:text-base">
+                    {!certification ? 'NR' : certification}
                   </div>
                   <div className="max-w-min rounded-md border border-slate-600 px-2 py-1 text-center text-sm uppercase md:text-base">
                     {data?.status}

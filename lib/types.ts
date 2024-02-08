@@ -55,6 +55,9 @@ export type MovieGeneralDetails = {
     results: Video[];
   };
   credits?: CreditsResponse;
+  release_dates: {
+    results: ReleaseDate[];
+  };
 };
 
 export type CreditsResponse = {
@@ -200,17 +203,27 @@ export type Review = {
   updated_at: string;
   url: string;
 };
+
+export type ReleaseDate = {
+  iso_3166_1: string;
+  release_dates: {
+    certification: string;
+    note: string;
+    type: number;
+    release_date: string;
+  }[];
+};
+
 // {
-//   "author": "elshaarawy",
-//   "author_details": {
-//     "name": "",
-//     "username": "elshaarawy",
-//     "avatar_path": null,
-//     "rating": 9
-//   },
-//   "content": "very good movie 9.5/10 محمد الشعراوى",
-//   "created_at": "2016-04-29T18:08:41.892Z",
-//   "id": "5723a329c3a3682e720005db",
-//   "updated_at": "2021-06-23T15:57:47.190Z",
-//   "url": "https://www.themoviedb.org/review/5723a329c3a3682e720005db"
+//   "iso_3166_1": "AE",
+//   "release_dates": [
+//     {
+//       "certification": "",
+//       "descriptors": [],
+//       "iso_639_1": "",
+//       "note": "",
+//       "release_date": "2012-05-28T00:00:00.000Z",
+//       "type": 3
+//     }
+//   ]
 // },

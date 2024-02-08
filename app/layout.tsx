@@ -8,7 +8,7 @@ import { poppins } from '@/components/ui/fonts';
 import Footer from '@/components/shared/footer';
 
 export const metadata: Metadata = {
-  title: 'T&Ms',
+  title: 'MUVI',
   description: 'Search and Discover various tv shows and movies.',
 };
 
@@ -24,7 +24,7 @@ export default function RootLayout({
           <Providers>
             <ClerkLoaded>
               <Navbar />
-              <div className="">{children}</div>
+              <div>{children}</div>
               <Footer />
             </ClerkLoaded>
             <ClerkLoading>
