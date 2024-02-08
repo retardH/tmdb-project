@@ -37,3 +37,4 @@ next-env.d.ts
 .prettierrc
 package-lock.json
 pnpm-lock.yaml
+.env

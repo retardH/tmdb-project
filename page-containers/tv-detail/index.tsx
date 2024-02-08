@@ -10,6 +10,7 @@ import { formatDate } from '@/lib/utils';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import Credits from '@/components/shared/credits';
 import { DetailPageSkeleton } from '@/components/shared/skeletons';
+import ReviewsSection from '@/components/shared/reviews';
 
 const TvShowDetailsPage = () => {
   const { id } = useParams();
@@ -39,7 +40,7 @@ const TvShowDetailsPage = () => {
             <section className="wrapper my-10 flex gap-6 md:my-16">
               <figure className="relative hidden h-[460px] flex-1 md:block">
                 <Image
-                  src={`${imageUrlOriginal}${data?.poster_path}`}
+                  src={`${imageUrlOriginal}${data.poster_path}`}
                   alt="poster image"
                   fill
                   priority={true}
@@ -52,13 +53,13 @@ const TvShowDetailsPage = () => {
                     PG-13
                   </div>
                   <div className="min-w-max rounded-md border border-slate-600 px-2 py-1 text-center text-sm uppercase md:text-base">
-                    {data?.status}
+                    {data.status}
                   </div>
                 </div>
                 <div className="my-2">
                   <span className="mb-2 font-semibold">Overview</span>
                   <p className="text-sm leading-relaxed text-slate-300 md:text-base">
-                    {data?.overview}
+                    {data.overview}
                   </p>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
@@ -118,6 +119,7 @@ const TvShowDetailsPage = () => {
                 <ScrollBar orientation="horizontal" />
               </ScrollArea>
             </section>
+            <ReviewsSection id={+id} type="tv" />
           </section>
         )
       )}
