@@ -7,14 +7,13 @@ import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import React from 'react';
 import BannerSection from '../../components/shared/banner';
-import { Separator } from '@/components/ui/separator';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import Credits from '../../components/shared/credits';
 import { DetailPageSkeleton } from '@/components/shared/skeletons';
+import ReviewSection from '../../components/shared/reviews';
 
 const MovieDetail = () => {
   const { id } = useParams();
-  console.log('movie id === ', id);
   const { data, isLoading } = useMovieGeneralDetails<MovieGeneralDetails>(+id);
 
   const directorName = data?.credits?.crew.find(
@@ -34,17 +33,17 @@ const MovieDetail = () => {
             <BannerSection
               type="Movie"
               trailerId={trailerId}
-              title={data?.title}
-              tagline={data?.tagline}
+              title={data.title}
+              tagline={data.tagline}
               backdropImage={backdropImage}
-              voteAverage={data?.vote_average.toFixed(1)}
-              voteCount={data?.vote_count}
+              voteAverage={data.vote_average.toFixed(1)}
+              voteCount={data.vote_count}
               releaseDate={data.release_date}
             />
             <section className="wrapper my-10 flex gap-6 md:my-16">
               <figure className="relative hidden h-[460px] flex-1 md:block">
                 <Image
-                  src={`${imageUrlOriginal}${data?.poster_path}`}
+                  src={`${imageUrlOriginal}${data.poster_path}`}
                   alt="poster image"
                   fill
                   className="rounded-md object-cover"
@@ -62,11 +61,11 @@ const MovieDetail = () => {
                 <div className="my-2">
                   <span className="mb-2 font-semibold">Overview</span>
                   <p className="text-sm leading-relaxed text-slate-300 md:text-base">
-                    {data?.overview}
+                    {data.overview}
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  {data?.genres.map((genre) => {
+                  {data.genres.map((genre) => {
                     return (
                       <div
                         key={genre.id}
@@ -79,19 +78,19 @@ const MovieDetail = () => {
                 </div>
                 <div className="flex items-center gap-2 text-sm md:text-base">
                   <span className="text-slate-400">Released Date:</span>
-                  <span>{formatDate(data?.release_date!)}</span>
+                  <span>{formatDate(data.release_date!)}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm md:text-base">
                   <span className="text-slate-400">Runtime:</span>
-                  <span>{formatRuntime(data?.runtime!)}</span>
+                  <span>{formatRuntime(data.runtime!)}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm md:text-base">
                   <span className="text-slate-400">Budget:</span>
-                  <span>${data?.budget}</span>
+                  <span>${data.budget}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm md:text-base">
                   <span className="text-slate-400">Revenue:</span>
-                  <span>${data?.revenue}</span>
+                  <span>${data.revenue}</span>
                 </div>
                 <div className="flex flex-col text-sm md:text-base">
                   <span className="text-slate-400">Directed by,</span>
@@ -99,7 +98,7 @@ const MovieDetail = () => {
                 </div>
               </section>
             </section>
-            <section className="wrapper my-8 md:my-16">
+            <section className="wrapper my-8 md:my-12">
               <h4 className="text-lg md:text-xl">Top Billed Casts</h4>
               <ScrollArea className="w-full whitespace-nowrap rounded-md">
                 <div className="py-4">
@@ -108,6 +107,7 @@ const MovieDetail = () => {
                 <ScrollBar orientation="horizontal" />
               </ScrollArea>
             </section>
+            <ReviewSection id={+id} type="movie" />
           </div>
         )
       )}

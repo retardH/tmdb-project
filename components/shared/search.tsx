@@ -24,7 +24,7 @@ const Search: React.FC<Props> = ({ setShow }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [debouncedQuery] = useDebounce<string>(searchQuery);
   const [searchType, setSearchType] = useState('movie');
-  const { data, isLoading, mutate } = useSearchData<MovieAndTVShowResponse>(
+  const { data, isLoading } = useSearchData<MovieAndTVShowResponse>(
     debouncedQuery,
     searchType,
   );
@@ -33,13 +33,13 @@ const Search: React.FC<Props> = ({ setShow }) => {
     <div className="absolute right-0 top-full z-50 mr-2 mt-1 w-[95%] rounded-sm bg-slate-900/95 p-2 shadow-md backdrop-blur-xl sm:max-w-[600px] md:mx-[1.5rem] md:mr-0 lg:max-w-[800px]">
       <div className="flex items-center gap-1">
         <Input
-          className="flex-3 md:flex-5 w-full focus-visible:outline-0 focus-visible:ring-0"
+          className="w-8/12 focus-visible:outline-0 focus-visible:ring-0 md:w-10/12"
           placeholder="Search movie or tv shows..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         <Select value={searchType} onValueChange={setSearchType}>
-          <SelectTrigger className="flex-1">
+          <SelectTrigger className="w-4/12 md:w-2/12">
             <SelectValue placeholder="Type" />
           </SelectTrigger>
           <SelectContent>

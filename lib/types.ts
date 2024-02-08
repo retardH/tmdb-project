@@ -175,4 +175,42 @@ export type People = {
 export type PopularPeopleResponse = {
   page: number;
   results: People[];
+  total_pages: number;
+  total_results: number;
 };
+
+export type ReviewsResponse = {
+  page: number;
+  results: Review[];
+  total_pages: number;
+  total_results: number;
+};
+
+export type Review = {
+  author: string;
+  author_details: {
+    name: string;
+    username: string;
+    avater_path: string | null;
+    rating: number;
+  };
+  content: string;
+  created_at: string;
+  id: string;
+  updated_at: string;
+  url: string;
+};
+// {
+//   "author": "elshaarawy",
+//   "author_details": {
+//     "name": "",
+//     "username": "elshaarawy",
+//     "avatar_path": null,
+//     "rating": 9
+//   },
+//   "content": "very good movie 9.5/10 محمد الشعراوى",
+//   "created_at": "2016-04-29T18:08:41.892Z",
+//   "id": "5723a329c3a3682e720005db",
+//   "updated_at": "2021-06-23T15:57:47.190Z",
+//   "url": "https://www.themoviedb.org/review/5723a329c3a3682e720005db"
+// },
