@@ -26,6 +26,11 @@ const ReviewsSection: React.FC<Props> = ({ id, type }) => {
               />
             );
           })}
+        {data?.results.length === 0 && (
+          <h2 className="text-base font-normal text-slate-400 md:text-lg">
+            There are no reviews currently.
+          </h2>
+        )}
       </div>
     </section>
   );

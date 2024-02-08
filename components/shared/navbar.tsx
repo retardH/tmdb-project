@@ -35,7 +35,7 @@ const Navbar = () => {
         <div className="flex items-center gap-8">
           <Link href="/">
             <h4 className="cursor-default text-xl font-bold italic tracking-wider text-yellow-500 md:text-2xl">
-              T&Ms
+              MUVI
             </h4>
           </Link>
           <div className="hidden items-center gap-6 md:flex">

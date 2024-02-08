@@ -12,7 +12,7 @@ const Footer = () => {
             className="cursor-default text-xl font-bold italic tracking-wider text-yellow-500 md:text-2xl"
             onClick={() => router.push('/')}
           >
-            T&Ms
+            MUVI
           </h4>
           <span>
             &copy; All the data, photos and videos are used from{' '}
