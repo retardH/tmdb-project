@@ -25,6 +25,7 @@ const Discover = () => {
   const [discoverdData, setDiscoveredData] = useState<
     MovieAndTVShowResponse['results']
   >([]);
+
   useEffect(() => {
     if (data?.results) {
       setDiscoveredData((prevData) => {

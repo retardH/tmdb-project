@@ -1,7 +1,6 @@
 import MovieCard from '@/page-containers/home/card';
 import { HomeMovieCartSkeletons } from '@/components/shared/skeletons';
 import { usePopularMoviesAndShows } from '@/services/popularMoviesAndShows';
-import { useTrendingMoviesAndShows } from '@/services/trendingMoviesAndShows';
 import React from 'react';
 
 interface Props {
@@ -9,7 +8,6 @@ interface Props {
 }
 const Popular: React.FC<Props> = ({ type }) => {
   const { data, isLoading } = usePopularMoviesAndShows<any>(type);
-  console.log('data', data);
   if (isLoading) {
     return <HomeMovieCartSkeletons />;
   }
