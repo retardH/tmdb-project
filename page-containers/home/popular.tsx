@@ -8,7 +8,7 @@ interface Props {
   type: string;
 }
 const Popular: React.FC<Props> = ({ type }) => {
-  const { data, isLoading, error } = usePopularMoviesAndShows<any>(type);
+  const { data, isLoading } = usePopularMoviesAndShows<any>(type);
   console.log('data', data);
   if (isLoading) {
     return <HomeMovieCartSkeletons />;
@@ -24,7 +24,6 @@ const Popular: React.FC<Props> = ({ type }) => {
             posterPath={result.poster_path}
             title={result.name ?? result.title}
             voteCount={result.vote_average}
-            overview={result.overview}
             date={result.release_date ?? result.first_air_date}
           />
         );

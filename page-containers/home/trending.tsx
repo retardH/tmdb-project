@@ -10,7 +10,7 @@ interface Props {
   timeWindow: string;
 }
 const Trending: React.FC<Props> = ({ timeWindow }) => {
-  const { data, isLoading, error } =
+  const { data, isLoading } =
     useTrendingMoviesAndShows<MovieAndTVShowResponse>(timeWindow);
   console.log('data', data);
   if (isLoading) {
@@ -28,7 +28,6 @@ const Trending: React.FC<Props> = ({ timeWindow }) => {
             posterPath={result.poster_path}
             title={result.name ?? result.title}
             voteCount={result.vote_average}
-            overview={result.overview}
             date={result.release_date ?? result.first_air_date}
           />
         );
