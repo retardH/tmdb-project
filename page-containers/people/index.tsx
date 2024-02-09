@@ -16,7 +16,6 @@ const PeoplePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { data, isLoading } =
     usePopularPeople<PopularPeopleResponse>(currentPage);
-  console.log(data);
   const getKnownForMovies = (results: MovieOrTVShow[]) => {
     return results
       .slice(0, 3)

@@ -13,7 +13,6 @@ interface Props {
 const SliderChangeAlert: React.FC<Props> = ({ show, setShow, desc }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log('set show false');
       setShow(false);
     }, 1000);
 

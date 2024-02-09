@@ -2,8 +2,7 @@ import { RatingStar } from '@/components/icons';
 import MotionDiv from '@/components/shared/motion-div';
 import { imageUrlOriginal } from '@/lib/constants';
 import { MovieOrTVShow } from '@/lib/types';
-import { cn } from '@/lib/utils';
-import { format } from 'date-fns';
+import { cn, formatDate } from '@/lib/utils';
 import { ImageIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -36,21 +35,23 @@ const Card: React.FC<Props> = ({ data, index, type }) => {
       className="w-full cursor-default"
     >
       <Link href={`/${type}/${data.id}`}>
-        <figure className="relative flex h-[240px] w-full items-center justify-center bg-slate-900 sm:h-[300px] md:h-[280px]">
-          <Image
-            src={`${imageUrlOriginal}${data.poster_path}`}
-            alt="poster image"
-            fill
-            sizes="50vw, (min-width: 768px) 30vw"
-            className={cn(
-              'rounded-md object-cover object-center',
-              imgLoaded ? 'opacity-100' : 'opacity-0',
-            )}
-            onLoad={() => {
-              setImgLoaded(true);
-            }}
-          />
-          {!imgLoaded && (
+        <figure className="relative flex h-[240px] w-full items-center justify-center overflow-hidden rounded-md bg-slate-900 sm:h-[300px] md:h-[280px]">
+          {data.poster_path && (
+            <Image
+              src={`${imageUrlOriginal}${data.poster_path}`}
+              alt="poster image"
+              fill
+              sizes="50vw, (min-width: 768px) 30vw"
+              className={cn(
+                'rounded-md object-cover object-center',
+                imgLoaded ? 'opacity-100' : 'opacity-0',
+              )}
+              onLoad={() => {
+                setImgLoaded(true);
+              }}
+            />
+          )}
+          {(!imgLoaded || !data.poster_path) && (
             <ImageIcon
               className="h-auto w-[60px]"
               color="#cbd5e1"
@@ -67,7 +68,7 @@ const Card: React.FC<Props> = ({ data, index, type }) => {
             {data.title ?? data.name}
           </h4>
           <span className="text-sm text-primary-500">
-            {format(new Date(data.release_date ?? data.first_air_date), 'PP')}
+            {formatDate(data.release_date ?? data.first_air_date ?? '')}
           </span>
         </div>
       </Link>

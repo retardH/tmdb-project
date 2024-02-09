@@ -16,7 +16,6 @@ const TvShowDetailsPage = () => {
   const { id } = useParams();
   const { data, isLoading } =
     useTvShowGeneralDetails<TvShowsGeneralDetails>(+id);
-  console.log(data);
   const backdropPath = `${imageUrlOriginal}${data?.backdrop_path}`;
   const trailerId = data?.videos.results.find((v) => v.type === 'Trailer')?.key;
 

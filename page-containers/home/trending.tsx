@@ -1,7 +1,6 @@
 'use client';
 import MovieCard from '@/page-containers/home/card';
 import { HomeMovieCartSkeletons } from '@/components/shared/skeletons';
-import { getTrendingMoviesAndShows } from '@/lib/data';
 import { MovieAndTVShowResponse } from '@/lib/types';
 import { useTrendingMoviesAndShows } from '@/services/trendingMoviesAndShows';
 import React from 'react';
@@ -12,7 +11,6 @@ interface Props {
 const Trending: React.FC<Props> = ({ timeWindow }) => {
   const { data, isLoading } =
     useTrendingMoviesAndShows<MovieAndTVShowResponse>(timeWindow);
-  console.log('data', data);
   if (isLoading) {
     return <HomeMovieCartSkeletons />;
   }
