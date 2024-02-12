@@ -35,7 +35,7 @@ const Card: React.FC<Props> = ({ data, index, type }) => {
       className="w-full cursor-default"
     >
       <Link href={`/${type}/${data.id}`}>
-        <figure className="relative flex h-[240px] w-full items-center justify-center overflow-hidden rounded-md bg-slate-900 sm:h-[300px] md:h-[280px]">
+        <figure className="relative flex h-[240px] w-full items-center justify-center overflow-hidden rounded-md bg-slate-900 sm:h-[300px] md:h-[260px]">
           {data.poster_path && (
             <Image
               src={`${imageUrlOriginal}${data.poster_path}`}

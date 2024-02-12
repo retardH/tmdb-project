@@ -48,7 +48,7 @@ const ReviewCard: React.FC<Props> = ({
           dangerouslySetInnerHTML={{
             __html: showAllContent
               ? content
-              : content.substring(0, 410) + '...',
+              : content.substring(0, 410) + ' ......',
           }}
         ></div>
         {content.length > 450 && (
@@ -57,7 +57,7 @@ const ReviewCard: React.FC<Props> = ({
             className="cursor-pointer text-sm text-slate-100 underline underline-offset-2 transition-all hover:text-slate-400 md:text-base"
             onClick={() => setShowAllContent(!showAllContent)}
           >
-            {showAllContent ? 'show less...' : 'show more...'}
+            {showAllContent ? 'show less' : 'show more'}
           </span>
         )}
       </div>

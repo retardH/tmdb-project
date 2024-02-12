@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import Popular from './popular';
+import TabSelect from './tab-select';
 
 const Home = () => {
   const [trendingTimeWindow, setTrendingTimeWindow] = useState<string>('day');
@@ -19,20 +20,16 @@ const Home = () => {
     <div className="w-full">
       <HeroSection imagePath="/f1AQhx6ZfGhPZFTVKgxG91PhEYc.jpg" />
       <section className="wrapper my-10">
-        <div className="mb-4 flex items-center gap-4">
+        <div className="mb-4 flex flex-col gap-2">
           <h2 className="text-xl text-yellow-500 lg:text-2xl">Trending</h2>
-          <Select
-            value={trendingTimeWindow}
-            onValueChange={(value) => setTrendingTimeWindow(value)}
-          >
-            <SelectTrigger className="w-[120px]">
-              <SelectValue placeholder="Today or This Week" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="day">Today</SelectItem>
-              <SelectItem value="week">This Week</SelectItem>
-            </SelectContent>
-          </Select>
+          <TabSelect
+            items={[
+              { value: 'day', text: 'Today' },
+              { value: 'week', text: 'This Week' },
+            ]}
+            activeValue={trendingTimeWindow}
+            setActiveValue={setTrendingTimeWindow}
+          />
         </div>
         <ScrollArea className="w-full whitespace-nowrap rounded-md">
           <div className="py-4">
@@ -42,19 +39,18 @@ const Home = () => {
         </ScrollArea>
       </section>
       <section className="wrapper my-10">
-        <div className="mb-4 flex items-center gap-4">
+        <div className="mb-4 flex flex-col gap-2">
           <h2 className="text-xl text-yellow-500 lg:text-2xl">
             What&apos;s Popular
           </h2>
-          <Select value={popular} onValueChange={(value) => setPopular(value)}>
-            <SelectTrigger className="w-[120px]">
-              <SelectValue placeholder="Movie or TV Shows" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="movie">Movies</SelectItem>
-              <SelectItem value="tv">TV Shows</SelectItem>
-            </SelectContent>
-          </Select>
+          <TabSelect
+            items={[
+              { value: 'movie', text: 'Movies' },
+              { value: 'tv', text: 'TVShows' },
+            ]}
+            activeValue={popular}
+            setActiveValue={setPopular}
+          />
         </div>
         <ScrollArea className="w-full whitespace-nowrap rounded-md">
           <div className="py-4">

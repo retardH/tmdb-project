@@ -9,13 +9,14 @@ const HeroSection: React.FC<Props> = ({ imagePath }) => {
   return (
     <section className="wrapper relative -z-10 flex h-[250px] items-center md:h-[400px]">
       <Image
-        src={`${imageUrlOriginal}${imagePath}`}
+        src="/hero-banner.jpg"
         alt="hero image"
         width={960}
         height={540}
+        priority
         className="absolute -z-20 h-[250px] w-full object-cover object-top md:h-[400px]"
       />
-      <div className="absolute inset-0 -z-10 bg-slate-900/60 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 -z-10 bg-slate-900/80 backdrop-blur-sm"></div>
       <div className="flex flex-col justify-center p-6 md:p-14">
         <h1 className="text-3xl text-yellow-500 md:text-5xl lg:text-6xl">
           Welcome.
