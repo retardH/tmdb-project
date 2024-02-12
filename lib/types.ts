@@ -214,16 +214,17 @@ export type ReleaseDate = {
   }[];
 };
 
-// {
-//   "iso_3166_1": "AE",
-//   "release_dates": [
-//     {
-//       "certification": "",
-//       "descriptors": [],
-//       "iso_639_1": "",
-//       "note": "",
-//       "release_date": "2012-05-28T00:00:00.000Z",
-//       "type": 3
-//     }
-//   ]
-// },
+export type DiscoverFilterAndSortType = {
+  'vote_count.gte': number;
+  'vote_count.lte': number;
+  'air_date.gte': string;
+  'air_date.lte': string;
+  'release_date.gte': string;
+  'release_date.lte': string;
+  sort_by: string;
+  with_genres: string;
+  without_genres: string;
+  with_release_type: string;
+  language: string;
+  release_type: number;
+};

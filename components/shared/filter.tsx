@@ -15,27 +15,21 @@ import {
   SelectValue,
 } from '../ui/select';
 import DatePicker from '../ui/data-picker';
-import { movieGenres } from '@/lib/constants';
-import { Slider } from '../ui/slider';
-import SliderChangeAlert from './slider-change-alert';
+import { languages, movieGenres } from '@/lib/constants';
+import { DiscoverFilterAndSortType } from '@/lib/types';
 
-const Filter = () => {
+interface Props {
+  filterParams: DiscoverFilterAndSortType;
+  setFilterParams: React.Dispatch<
+    React.SetStateAction<DiscoverFilterAndSortType>
+  >;
+}
+const Filter: React.FC<Props> = ({ filterParams, setFilterParams }) => {
   const [startDate, setStartDate] = useState<Date | undefined>();
-  const [userVotes, setUserVotes] = useState<{ from: number; to: number }>({
-    from: 0,
-    to: 10,
-  });
 
-  const [showUserVotesChangeAlert, setShowUserVotesChangeAlert] =
-    useState<boolean>(false);
-
-  const handleUserVoteChange = (values: number[]) => {
-    setShowUserVotesChangeAlert(true);
-    setUserVotes({ from: values[0], to: values[1] });
-  };
   return (
     <div className="w-full">
-      <Accordion type="single" collapsible>
+      <Accordion type="single" collapsible defaultValue="one">
         <AccordionItem
           value="one"
           className="rounded-md border-b-0 bg-slate-900 shadow-sm"
@@ -58,6 +52,30 @@ const Filter = () => {
               />
             </div>
             <Separator className="w-full" />
+
+            <div className="flex flex-col gap-2 px-4 py-4">
+              <span className="text-base font-medium">Language</span>
+              <Select
+                value={filterParams.language}
+                onValueChange={(value) =>
+                  setFilterParams((prev) => ({ ...prev, language: value }))
+                }
+              >
+                <SelectTrigger className="mt-2 w-full">
+                  <SelectValue placeholder="Select Language" />
+                </SelectTrigger>
+                <SelectContent>
+                  {languages.map((lang) => {
+                    return (
+                      <SelectItem key={lang.iso_639_1} value={lang.iso_639_1}>
+                        {lang.english_name}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
+            </div>
+            <Separator className="w-full" />
             <div className="flex flex-col gap-2 px-4 py-4">
               <span className="text-base font-medium">Genres</span>
               <div className="flex flex-wrap items-center gap-x-2 gap-y-3">
@@ -73,7 +91,9 @@ const Filter = () => {
                 })}
               </div>
             </div>
-            <Separator className="w-full" />
+            {/* <Separator className="w-full" /> */}
+
+            {/* 
             <div className="relative flex flex-col gap-3 px-4 py-4">
               <span className="text-base font-medium">User Votes</span>
               <Slider
@@ -114,7 +134,7 @@ const Filter = () => {
                 setShow={setShowUserVotesChangeAlert}
                 desc={`Rated ${userVotes.from} - ${userVotes.to}`}
               />
-            </div>
+            </div> */}
           </AccordionContent>
         </AccordionItem>
       </Accordion>

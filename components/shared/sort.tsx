@@ -16,7 +16,7 @@ import {
 const Sort = () => {
   return (
     <div>
-      <Accordion type="single" collapsible>
+      <Accordion type="single" collapsible defaultValue="one">
         <AccordionItem
           value="one"
           className="rounded-md border-b-0 bg-slate-900 shadow-sm"
@@ -33,11 +33,19 @@ const Sort = () => {
                 <SelectValue placeholder="Sort Options" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="day">Popularity Descending</SelectItem>
-                <SelectItem value="day">Popularity Ascending</SelectItem>
-                <SelectItem value="day">{'Title(A-Z)'}</SelectItem>
-
-                <SelectItem value="week">This Week</SelectItem>
+                <SelectItem value="popularity.desc">
+                  Popularity Descending
+                </SelectItem>
+                <SelectItem value="popularity.aesc">
+                  Popularity Ascending
+                </SelectItem>
+                <SelectItem value="vote_average.desc">
+                  Rating Descending
+                </SelectItem>
+                <SelectItem value="vote_average.asc">
+                  Rating Ascending
+                </SelectItem>
+                <SelectItem value="title.asc">{'Title(A-Z)'}</SelectItem>
               </SelectContent>
             </Select>
           </AccordionContent>

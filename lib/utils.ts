@@ -42,3 +42,7 @@ export function formatRuntime(time: number) {
   }
   return runtime;
 }
+
+export const routeFilter = (params: any) => {
+  return new URLSearchParams(params);
+};
