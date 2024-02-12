@@ -5,19 +5,15 @@ import Card from './card';
 import { useSearchParams } from 'next/navigation';
 import { useDiscoverLists } from '@/services/discoverLists';
 import { parsePageTitle } from '@/lib/utils';
-import Sort from '@/components/shared/sort';
 import Filter from '@/components/shared/filter';
-import { Button } from '@/components/ui/button';
 import { LoadingIcon } from '@/components/icons';
 import { useInView } from 'react-intersection-observer';
-import dayjs from 'dayjs';
 import { constantFilterParams } from '@/lib/constants';
 
 const Discover = () => {
   const [filterParams, setFilterParams] = useState<DiscoverFilterAndSortType>({
-    language: 'en-US',
+    language: 'en',
   } as DiscoverFilterAndSortType);
-
   const searchParams = useSearchParams();
   const { ref, inView } = useInView();
   const type = searchParams.get('type') as 'movie' | 'tv';
@@ -33,10 +29,7 @@ const Discover = () => {
   >([]);
 
   useEffect(() => {
-    setFilterParams((prev) => ({
-      ...prev,
-      ...constantFilterParams[search],
-    }));
+    setFilterParams(constantFilterParams[search]);
 
     return () => {
       setFilterParams({} as DiscoverFilterAndSortType);
@@ -57,8 +50,9 @@ const Discover = () => {
 
   // Effect to clear the discovered data state and page number every search and type change.
   useEffect(() => {
-    setDiscoveredData([]);
+    // setDiscoveredData([]);
     setCurrentPage(1);
+    return () => setDiscoveredData([]);
   }, [search, type, filterParams]);
 
   // For infinite data loading feature
@@ -78,12 +72,12 @@ const Discover = () => {
       </h1>
       <div className="flex flex-col gap-8 md:flex-row">
         <div className=" flex w-full flex-col gap-4 md:w-[285px]">
-          <Sort />
+          {/* <Sort /> */}
           <Filter
             filterParams={filterParams}
             setFilterParams={setFilterParams}
+            type={type}
           />
-          <Button>Search</Button>
         </div>
         <div className="flex-8">
           {discoverdData.length < 1 ? (

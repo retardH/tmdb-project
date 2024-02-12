@@ -24,7 +24,7 @@ const MovieCard: React.FC<Props> = ({
 }) => {
   const [imgLoaded, setImgLoaded] = useState<boolean>(false);
   return (
-    <Link href={`${type}/${id}`} className="flex flex-col items-start gap-1">
+    <Link href={`${type}/${id}`} className="flex flex-col items-start gap-0">
       <figure className="relative mb-3 flex h-[200px] w-[135px] items-center justify-center rounded-md bg-slate-900 md:h-[225px] md:w-[145px]">
         <Image
           src={`${imageUrlOriginal}${posterPath}`}

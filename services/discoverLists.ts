@@ -7,10 +7,6 @@ export const useDiscoverLists = <ApiResponse>(
   page = 1,
   params: DiscoverFilterAndSortType,
 ): SWRResponse<ApiResponse, any> => {
-  console.log(
-    'discover params',
-    `/discover/${type}?include_adult=false&include_video=false&${routeFilter(params)}&page=${page}`,
-  );
   return useSWR(
     `/discover/${type}?include_adult=false&include_video=false&${routeFilter(params)}&page=${page}`,
   );
