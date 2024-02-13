@@ -3,14 +3,15 @@ import { imageUrlOriginal } from '@/lib/constants';
 import { MovieGeneralDetails } from '@/lib/types';
 import { formatDate, formatRuntime } from '@/lib/utils';
 import { useMovieGeneralDetails } from '@/services/movieDetails';
-import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import React from 'react';
-import BannerSection from '../../components/shared/banner';
+import BannerSection from '@/components/shared/banner';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
-import Credits from '../../components/shared/credits';
+import Credits from '@/components/shared/credits';
 import { DetailPageSkeleton } from '@/components/shared/skeletons';
-import ReviewSection from '../../components/shared/reviews';
+import ReviewSection from '@/components/shared/reviews';
+import { ImageIcon } from 'lucide-react';
+import { Img } from 'react-image';
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -44,13 +45,20 @@ const MovieDetail = () => {
               releaseDate={data.release_date}
             />
             <section className="wrapper my-10 flex gap-6 md:my-16">
-              <figure className="relative hidden h-[460px] flex-1 md:block">
-                <Image
-                  src={`${imageUrlOriginal}${data.poster_path}`}
-                  alt="poster image"
-                  fill
-                  className="rounded-md object-cover"
-                />
+              <figure className="relative hidden h-[460px] flex-1 items-center justify-center md:flex">
+                {data.poster_path ? (
+                  <Img
+                    src={`${imageUrlOriginal}${data.poster_path}`}
+                    alt="poster image"
+                    className="h-full w-full rounded-md object-cover"
+                  />
+                ) : (
+                  <ImageIcon
+                    className="h-auto w-[60px]"
+                    color="#cbd5e1"
+                    strokeWidth={1}
+                  />
+                )}
               </figure>
               <section className="flex-3 flex flex-col gap-3.5">
                 <div className="flex items-center gap-4">

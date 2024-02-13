@@ -9,8 +9,9 @@ import {
 import { imageUrlOriginal } from '@/lib/constants';
 import { MovieOrTVShow, PopularPeopleResponse } from '@/lib/types';
 import { usePopularPeople } from '@/services/people';
-import Image from 'next/image';
+import { ImageIcon } from 'lucide-react';
 import React, { useState } from 'react';
+import { Img } from 'react-image';
 
 const PeoplePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -45,14 +46,21 @@ const PeoplePage = () => {
             return (
               <div key={people.id} className="col-span-1">
                 <div className="w-full">
-                  <figure className="relative mb-2 h-[240px] w-full sm:h-[300px] md:h-[350px] xl:h-[400px]">
-                    <Image
-                      src={`${imageUrlOriginal}${people.profile_path}`}
-                      alt="poster image"
-                      fill
-                      sizes="50vw, (min-width: 768px) 30vw"
-                      className="rounded-md object-cover object-center"
-                    />
+                  <figure className="relative mb-2 flex h-[240px] w-full items-center justify-center rounded-md bg-slate-900 sm:h-[300px] md:h-[350px] xl:h-[400px]">
+                    {people.profile_path ? (
+                      <Img
+                        src={`${imageUrlOriginal}${people.profile_path}`}
+                        alt="poster image"
+                        sizes="50vw, (min-width: 768px) 30vw"
+                        className="h-full w-full rounded-md object-cover object-center"
+                      />
+                    ) : (
+                      <ImageIcon
+                        className="h-auto w-[60px]"
+                        color="#cbd5e1"
+                        strokeWidth={1}
+                      />
+                    )}
                   </figure>
                   <div className="text-base font-medium md:text-lg">
                     {people.name}

@@ -1,6 +1,5 @@
-import { imageUrlOriginal } from '@/lib/constants';
-import Image from 'next/image';
 import React from 'react';
+import { Img } from 'react-image';
 
 interface Props {
   imagePath: string;
@@ -8,12 +7,11 @@ interface Props {
 const HeroSection: React.FC<Props> = ({ imagePath }) => {
   return (
     <section className="wrapper relative -z-10 flex h-[250px] items-center md:h-[400px]">
-      <Image
+      <Img
         src="/hero-banner.jpg"
         alt="hero image"
         width={960}
         height={540}
-        priority
         className="absolute -z-20 h-[250px] w-full object-cover object-top md:h-[400px]"
       />
       <div className="absolute inset-0 -z-10 bg-slate-900/80 backdrop-blur-sm"></div>
