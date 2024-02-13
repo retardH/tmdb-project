@@ -29,8 +29,8 @@ const Search: React.FC<Props> = ({ setShow }) => {
 
   return (
     <>
-      <div className="absolute right-0 top-full z-50 mr-2 mt-1 w-[95%] rounded-sm bg-slate-900/95 p-2 shadow-md backdrop-blur-xl sm:max-w-[600px] md:mx-[1.5rem] md:mr-0 lg:max-w-[800px]">
-        <div className="flex items-center gap-1">
+      <div className="absolute right-0 top-full z-50 mr-2 mt-1 w-[95%] rounded-sm bg-slate-900/95 shadow-md backdrop-blur-xl sm:max-w-[600px] md:mx-[1.5rem] md:mr-0 lg:max-w-[800px]">
+        <div className="flex items-center gap-1 p-2">
           <Input
             className="w-8/12 focus-visible:outline-0 focus-visible:ring-0 md:w-10/12"
             placeholder="Search movie or tv shows..."

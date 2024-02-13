@@ -21,7 +21,9 @@ const Home = () => {
       <HeroSection imagePath="/f1AQhx6ZfGhPZFTVKgxG91PhEYc.jpg" />
       <section className="wrapper my-10">
         <div className="mb-4 flex flex-col gap-2">
-          <h2 className="text-xl text-yellow-500 lg:text-2xl">Trending</h2>
+          <h2 className="text-xl font-semibold text-yellow-500 lg:text-2xl">
+            Trending
+          </h2>
           <TabSelect
             items={[
               { value: 'day', text: 'Today' },
@@ -40,8 +42,8 @@ const Home = () => {
       </section>
       <section className="wrapper my-10">
         <div className="mb-4 flex flex-col gap-2">
-          <h2 className="text-xl text-yellow-500 lg:text-2xl">
-            What&apos;s Popular
+          <h2 className="text-xl font-semibold text-yellow-500 lg:text-2xl">
+            What&apos;s Popular?
           </h2>
           <TabSelect
             items={[

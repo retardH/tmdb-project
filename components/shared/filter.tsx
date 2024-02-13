@@ -109,7 +109,11 @@ const Filter: React.FC<Props> = ({ filterParams, setFilterParams, type }) => {
                     <SelectItem value="vote_average.asc">
                       Rating Ascending
                     </SelectItem>
-                    <SelectItem value="title.asc">{'Title(A-Z)'}</SelectItem>
+                    <SelectItem
+                      value={type === 'movie' ? 'title.asc' : 'name.asc'}
+                    >
+                      {'Title(A-Z)'}
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>

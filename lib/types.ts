@@ -161,6 +161,9 @@ export type TvShowsGeneralDetails = {
     results: Video[];
   };
   credits?: CreditsResponse;
+  content_ratings?: {
+    results: TVShowContentRating[];
+  };
 };
 
 export type People = {
@@ -213,6 +216,18 @@ export type ReleaseDate = {
     release_date: string;
   }[];
 };
+
+export type TVShowContentRating = {
+  descriptors: any[];
+  iso_3166_1: string;
+  rating: string;
+};
+
+// {
+//   "descriptors": [],
+//   "iso_3166_1": "DE",
+//   "rating": "16"
+// },
 
 export type DiscoverFilterAndSortType = {
   'vote_count.gte': number;
