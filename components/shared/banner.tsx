@@ -1,8 +1,8 @@
 import { RatingStar } from '@/components/icons';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-import Image from 'next/image';
 import React from 'react';
 import { Play } from 'lucide-react';
+import { Img } from 'react-image';
 
 interface Props {
   backdropImage: string;
@@ -26,7 +26,7 @@ const BannerSection: React.FC<Props> = ({
 }) => {
   return (
     <section className="relative z-10 h-[360px] w-full overflow-hidden md:h-[400px] xl:h-[460px]">
-      <Image
+      <Img
         src={backdropImage}
         alt="backdrop image"
         width={960}

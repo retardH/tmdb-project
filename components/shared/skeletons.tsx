@@ -1,22 +1,23 @@
-import { FileImage as ImageIcon } from 'lucide-react';
+import { Image as ImageIcon } from 'lucide-react';
 import { Skeleton } from '../ui/skeleton';
 import { ScrollArea, ScrollBar } from '../ui/scroll-area';
 
 export const HomeMovieCartSkeletons = () => {
   return (
-    <div className="flex items-center gap-3 md:gap-6">
+    <div className="flex items-center gap-4 md:gap-5">
       {Array.from({ length: 8 }, (_, i) => i).map((v) => {
         return (
-          <Skeleton
-            key={v}
-            className="relative flex h-[225px] w-[150px] items-center justify-center rounded-md shadow-sm"
-          >
-            <ImageIcon
-              className="h-auto w-[60px]"
-              color="#cbd5e1"
-              strokeWidth={1}
-            />
-          </Skeleton>
+          <div key={v} className="flex flex-col gap-2">
+            <Skeleton className="relative flex h-[200px] w-[150px] items-center justify-center rounded-md shadow-sm md:h-[225px]">
+              <ImageIcon
+                className="h-auto w-[60px]"
+                color="#cbd5e1"
+                strokeWidth={1}
+              />
+            </Skeleton>
+            <Skeleton className="h-2 w-8/12 rounded-lg" />
+            <Skeleton className="h-2 w-5/12 rounded-lg" />
+          </div>
         );
       })}
     </div>

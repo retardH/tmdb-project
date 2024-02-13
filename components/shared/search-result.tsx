@@ -1,8 +1,8 @@
 import { imageUrlOriginal } from '@/lib/constants';
 import { cn, formatDate } from '@/lib/utils';
 import { ImageIcon } from 'lucide-react';
-import Image from 'next/image';
 import React, { useState } from 'react';
+import { Img } from 'react-image';
 
 interface Props {
   posterPath: string;
@@ -16,7 +16,7 @@ const SearchResult: React.FC<Props> = ({ posterPath, title, releaseDate }) => {
     <div className="flex w-full cursor-pointer items-center gap-2 p-2 transition-all hover:bg-slate-950/90">
       <figure className="relative flex h-[80px] w-[50px] items-center justify-center bg-slate-800">
         {posterPath && (
-          <Image
+          <img
             src={`${imageUrlOriginal}${posterPath}`}
             alt="image"
             width={50}
@@ -28,6 +28,7 @@ const SearchResult: React.FC<Props> = ({ posterPath, title, releaseDate }) => {
             onLoad={() => {
               setImgLoaded(true);
             }}
+            loading="lazy"
           />
         )}
         {(!imgLoaded || !posterPath) && (

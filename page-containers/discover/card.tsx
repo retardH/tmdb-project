@@ -4,9 +4,9 @@ import { imageUrlOriginal } from '@/lib/constants';
 import { MovieOrTVShow } from '@/lib/types';
 import { cn, formatDate } from '@/lib/utils';
 import { ImageIcon } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { Img } from 'react-image';
 
 interface Props {
   data: MovieOrTVShow;
@@ -37,14 +37,13 @@ const Card: React.FC<Props> = ({ data, index, type }) => {
       <Link href={`/${type}/${data.id}`}>
         <figure className="relative flex h-[240px] w-full items-center justify-center overflow-hidden rounded-md bg-slate-900 sm:h-[300px] md:h-[260px]">
           {data.poster_path && (
-            <Image
+            <Img
               src={`${imageUrlOriginal}${data.poster_path}`}
               alt="poster image"
-              fill
               sizes="50vw, (min-width: 768px) 30vw"
               className={cn(
-                'rounded-md object-cover object-center',
-                imgLoaded ? 'opacity-100' : 'opacity-0',
+                'h-full w-full rounded-md object-cover object-center',
+                !imgLoaded && 'hidden',
               )}
               onLoad={() => {
                 setImgLoaded(true);

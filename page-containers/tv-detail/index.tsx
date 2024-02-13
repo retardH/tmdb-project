@@ -5,12 +5,13 @@ import { useParams } from 'next/navigation';
 import React from 'react';
 import BannerSection from '../../components/shared/banner';
 import { imageUrlOriginal } from '@/lib/constants';
-import Image from 'next/image';
 import { formatDate } from '@/lib/utils';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import Credits from '@/components/shared/credits';
 import { DetailPageSkeleton } from '@/components/shared/skeletons';
 import ReviewsSection from '@/components/shared/reviews';
+import { Img } from 'react-image';
+import { ImageIcon } from 'lucide-react';
 
 const TvShowDetailsPage = () => {
   const { id } = useParams();
@@ -37,14 +38,20 @@ const TvShowDetailsPage = () => {
               trailerId={trailerId}
             />
             <section className="wrapper my-10 flex gap-6 md:my-16">
-              <figure className="relative hidden h-[460px] flex-1 md:block">
-                <Image
-                  src={`${imageUrlOriginal}${data.poster_path}`}
-                  alt="poster image"
-                  fill
-                  priority={true}
-                  className="rounded-md object-cover"
-                />
+              <figure className="relative hidden h-[460px] flex-1 items-center justify-center md:flex">
+                {data.poster_path ? (
+                  <Img
+                    src={`${imageUrlOriginal}${data.poster_path}`}
+                    alt="poster image"
+                    className="h-full w-full rounded-md object-cover"
+                  />
+                ) : (
+                  <ImageIcon
+                    className="h-auto w-[60px]"
+                    color="#cbd5e1"
+                    strokeWidth={1}
+                  />
+                )}
               </figure>
               <section className="flex-3 flex flex-col gap-3.5">
                 <div className="flex items-center gap-4">
