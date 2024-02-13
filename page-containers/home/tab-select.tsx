@@ -24,7 +24,7 @@ const TabSelect: React.FC<Props> = ({ items, activeValue, setActiveValue }) => {
             {item.value === activeValue && (
               <MotionDiv
                 layoutId={`select${items[0].text}`}
-                className="absolute inset-x-0 bottom-0 h-1 rounded-md bg-slate-50"
+                className="absolute inset-x-0 bottom-0 h-1 bg-slate-50"
                 transition={{
                   type: 'spring',
                   damping: 30,

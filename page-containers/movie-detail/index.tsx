@@ -109,15 +109,17 @@ const MovieDetail = () => {
                 </div>
               </section>
             </section>
-            <section className="wrapper my-8 md:my-12">
-              <h4 className="text-lg md:text-xl">Top Billed Casts</h4>
-              <ScrollArea className="w-full whitespace-nowrap rounded-md">
-                <div className="py-4">
-                  <Credits casts={data.credits?.cast} isLoading={false} />
-                </div>
-                <ScrollBar orientation="horizontal" />
-              </ScrollArea>
-            </section>
+            {data.credits?.cast && (
+              <section className="wrapper my-8 md:my-12">
+                <h4 className="text-lg md:text-xl">Top Billed Casts</h4>
+                <ScrollArea className="w-full whitespace-nowrap rounded-md">
+                  <div className="py-4">
+                    <Credits casts={data.credits?.cast} isLoading={false} />
+                  </div>
+                  <ScrollBar orientation="horizontal" />
+                </ScrollArea>
+              </section>
+            )}
             <ReviewSection id={+id} type="movie" />
           </div>
         )

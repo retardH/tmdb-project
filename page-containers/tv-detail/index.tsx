@@ -19,6 +19,9 @@ const TvShowDetailsPage = () => {
     useTvShowGeneralDetails<TvShowsGeneralDetails>(+id);
   const backdropPath = `${imageUrlOriginal}${data?.backdrop_path}`;
   const trailerId = data?.videos.results.find((v) => v.type === 'Trailer')?.key;
+  const contentRating = data?.content_ratings?.results.find(
+    (r) => r.iso_3166_1 === 'US',
+  )?.rating;
 
   return (
     <div>
@@ -56,7 +59,7 @@ const TvShowDetailsPage = () => {
               <section className="flex-3 flex flex-col gap-3.5">
                 <div className="flex items-center gap-4">
                   <div className="min-w-max rounded-md border border-slate-600 px-2 py-1 text-center text-sm uppercase md:text-base">
-                    PG-13
+                    {!contentRating ? 'NA' : contentRating}
                   </div>
                   <div className="min-w-max rounded-md border border-slate-600 px-2 py-1 text-center text-sm uppercase md:text-base">
                     {data.status}
@@ -116,15 +119,17 @@ const TvShowDetailsPage = () => {
                 )}
               </section>
             </section>
-            <section className="wrapper my-8 md:my-16">
-              <h4 className="text-lg md:text-xl">Top Billed Casts</h4>
-              <ScrollArea className="w-full whitespace-nowrap rounded-md">
-                <div className="py-4">
-                  <Credits casts={data.credits?.cast} isLoading={false} />
-                </div>
-                <ScrollBar orientation="horizontal" />
-              </ScrollArea>
-            </section>
+            {data.credits?.cast && (
+              <section className="wrapper my-8 md:my-16">
+                <h4 className="text-lg md:text-xl">Top Billed Casts</h4>
+                <ScrollArea className="w-full whitespace-nowrap rounded-md">
+                  <div className="py-4">
+                    <Credits casts={data.credits?.cast} isLoading={false} />
+                  </div>
+                  <ScrollBar orientation="horizontal" />
+                </ScrollArea>
+              </section>
+            )}
             <ReviewsSection id={+id} type="tv" />
           </section>
         )

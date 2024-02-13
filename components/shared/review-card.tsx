@@ -28,7 +28,7 @@ const ReviewCard: React.FC<Props> = ({
           </AvatarFallback>
         </Avatar>
         <div className="flex flex-col">
-          <h4 className="text-base font-semibold md:text-lg">{username}</h4>
+          <h4 className="text-base font-semibold">{username}</h4>
           <div className="flex items-center gap-1">
             {vote && (
               <div className="flex items-center rounded-md border-[0.5px] border-slate-800/80 p-1">
