@@ -84,7 +84,7 @@ const Navbar = () => {
             />
           ) : (
             <SearchIcon
-              className="ml-4 cursor-pointer transition-all hover:scale-110"
+              className="ml-4 cursor-pointer"
               size={28}
               onClick={() => setSearchBoxShow(!searchBoxShow)}
             />

@@ -20,7 +20,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${poppins.className} dark`}>
+        <body
+          className={`${poppins.className} dark bg-slate-950 text-slate-50`}
+        >
           <Providers>
             <ClerkLoaded>
               <Navbar />
