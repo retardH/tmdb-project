@@ -1,7 +1,7 @@
 import { RatingStar } from '@/components/icons';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import React from 'react';
-import { BookMarked, BookmarkIcon, Play, Star } from 'lucide-react';
+import { BookmarkIcon, Play, Star } from 'lucide-react';
 import { Img } from 'react-image';
 import { useUser } from '@clerk/nextjs';
 import { addWatchList } from '@/services/watchLists';
@@ -70,7 +70,7 @@ const BannerSection: React.FC<Props> = ({
               >
                 <BookmarkIcon
                   strokeWidth={1}
-                  className="overflow-hidden fill-yellow-500 text-slate-900"
+                  className="overflow-hidden text-slate-900"
                   size={20}
                 />
               </button>
