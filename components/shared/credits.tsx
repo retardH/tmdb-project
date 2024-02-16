@@ -12,11 +12,11 @@ const Credits: React.FC<Props> = ({ casts, isLoading }) => {
   return (
     <>
       {casts && (
-        <div className="flex items-center gap-4 md:gap-5">
+        <div className="flex gap-4 md:gap-5">
           {casts.map((cast, index) => {
             return (
               <div key={index} className="flex flex-col items-start gap-0">
-                <figure className="relative mb-3 flex h-[225px] w-[145px] items-center justify-center rounded-md">
+                <figure className="relative mb-3 flex h-[225px] w-[145px] items-center justify-center rounded-md bg-slate-900">
                   {!cast.profile_path ? (
                     <ImageIcon
                       className="h-auto w-[60px]"

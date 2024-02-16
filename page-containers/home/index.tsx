@@ -1,21 +1,19 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import HeroSection from './hero-section';
 import Trending from './trending';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import Popular from './popular';
 import TabSelect from './tab-select';
+import { getUserWatchLists } from '@/services/watchLists';
 
 const Home = () => {
   const [trendingTimeWindow, setTrendingTimeWindow] = useState<string>('day');
   const [popular, setPopular] = useState<string>('movie');
+
+  useEffect(() => {
+    getUserWatchLists('');
+  }, []);
   return (
     <div className="w-full">
       <HeroSection imagePath="/f1AQhx6ZfGhPZFTVKgxG91PhEYc.jpg" />

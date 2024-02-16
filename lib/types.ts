@@ -223,12 +223,6 @@ export type TVShowContentRating = {
   rating: string;
 };
 
-// {
-//   "descriptors": [],
-//   "iso_3166_1": "DE",
-//   "rating": "16"
-// },
-
 export type DiscoverFilterAndSortType = {
   'vote_count.gte': number;
   'vote_count.lte': number;
@@ -242,4 +236,13 @@ export type DiscoverFilterAndSortType = {
   with_release_type: string;
   language: string;
   release_type: number;
+};
+
+export type FireBaseAddWatchlistsPayload = {
+  id: number;
+  title: string;
+  overview: string;
+  poster_image: string;
+  rating: number;
+  date: string;
 };

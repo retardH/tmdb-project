@@ -12,6 +12,7 @@ import { DetailPageSkeleton } from '@/components/shared/skeletons';
 import ReviewSection from '@/components/shared/reviews';
 import { ImageIcon } from 'lucide-react';
 import { Img } from 'react-image';
+import { useUser } from '@clerk/nextjs';
 
 const MovieDetail = () => {
   const { id } = useParams();

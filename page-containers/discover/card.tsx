@@ -1,4 +1,5 @@
 import { RatingStar } from '@/components/icons';
+import CardMenu from '@/components/shared/card-menu';
 import MotionDiv from '@/components/shared/motion-div';
 import { imageUrlOriginal } from '@/lib/constants';
 import { MovieOrTVShow } from '@/lib/types';
@@ -32,9 +33,12 @@ const Card: React.FC<Props> = ({ data, index, type }) => {
         duration: 0.5,
       }}
       viewport={{ amount: 0, once: true }}
-      className="w-full cursor-default"
+      className="relative w-full cursor-default"
     >
-      <Link href={`/${type}/${data.id}`}>
+      <div className="absolute right-1 top-1 z-50 flex items-center justify-center">
+        <CardMenu />
+      </div>
+      <Link href={`/${type}/${data.id}`} className="relative">
         <figure className="relative flex h-[240px] w-full items-center justify-center overflow-hidden rounded-md bg-slate-900 sm:h-[300px] md:h-[260px]">
           {data.poster_path && (
             <Img

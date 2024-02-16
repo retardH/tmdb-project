@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { ImageIcon } from 'lucide-react';
 import { Img } from 'react-image';
+import CardMenu from '@/components/shared/card-menu';
 
 interface Props {
   posterPath: string;
@@ -24,7 +25,16 @@ const MovieCard: React.FC<Props> = ({
 }) => {
   const [imgLoaded, setImgLoaded] = useState<boolean>(false);
   return (
-    <Link href={`${type}/${id}`} className="flex flex-col items-start gap-0">
+    <Link
+      href={`${type}/${id}`}
+      className="relative flex flex-col items-start gap-0"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="absolute right-1 top-1 z-50 flex items-center justify-center"
+      >
+        <CardMenu />
+      </div>
       <figure className="relative mb-3 flex h-[200px] w-[135px] items-center justify-center rounded-md bg-slate-900 md:h-[225px] md:w-[145px]">
         <Img
           src={`${imageUrlOriginal}${posterPath}`}

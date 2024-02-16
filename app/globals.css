@@ -2,36 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-
-.mobile-menu-bg {
-    background-color: rgba(15, 23, 42, 0.98);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+h1 {
+  font-weight: 600;
+}
+
+h2,h3,h4,h5,h6 {
+  font-weight: 500;
+}
 
 @layer base {
-    * {
-        @apply box-border m-0 p-0;
-    }
-    body {
-        @apply bg-slate-950 text-slate-50;
-    }
-
-    nav {
-        @apply text-primary-50;
-    }
-
-    h1 {
-        @apply font-semibold;
-    }
-
-    h2,h3,h4,h5,h6 {
-        @apply font-medium;
-    }
-
-    .shimmer {
-        @apply before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent;
-    }
-
     .wrapper {
         @apply w-full px-2.5 md:px-0 md:w-11/12 lg:w-10/12 max-w-[1560px] mx-auto;
     }
@@ -40,24 +25,24 @@
 .flex-2 {
     flex: 2;
   }
-  .flex-3 {
+.flex-3 {
     flex: 3;
-  }
-  .flex-3 {
+}
+.flex-3 {
     flex: 3;
-  }
-  .flex-4 {
+}
+.flex-4 {
     flex: 4;
-  }
-  .flex-5 {
+}
+.flex-5 {
     flex: 5;
-  }
-  .flex-6 {
+}
+.flex-6 {
     flex: 6;
-  }
-  .flex-7 {
+}
+.flex-7 {
     flex: 7;
-  }
-  .flex-8 {
+}
+.flex-8 {
     flex: 8;
-  }
+}

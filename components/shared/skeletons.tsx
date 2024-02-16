@@ -8,7 +8,7 @@ export const HomeMovieCartSkeletons = () => {
       {Array.from({ length: 8 }, (_, i) => i).map((v) => {
         return (
           <div key={v} className="flex flex-col gap-2">
-            <Skeleton className="relative flex h-[200px] w-[135px] items-center justify-center rounded-md shadow-sm md:h-[225px]">
+            <Skeleton className="relative flex h-[200px] w-[135px] items-center justify-center rounded-md shadow-sm md:h-[225px] md:w-[145px]">
               <ImageIcon
                 className="h-auto w-[60px]"
                 color="#cbd5e1"
