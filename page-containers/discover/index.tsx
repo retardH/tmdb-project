@@ -50,7 +50,6 @@ const Discover = () => {
 
   // Effect to clear the discovered data state and page number every search and type change.
   useEffect(() => {
-    // setDiscoveredData([]);
     setCurrentPage(1);
     return () => setDiscoveredData([]);
   }, [search, type, filterParams]);
@@ -72,7 +71,6 @@ const Discover = () => {
       </h1>
       <div className="flex flex-col gap-8 md:flex-row">
         <div className=" flex w-full flex-col gap-4 md:w-[285px]">
-          {/* <Sort /> */}
           <Filter
             filterParams={filterParams}
             setFilterParams={setFilterParams}

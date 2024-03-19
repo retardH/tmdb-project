@@ -36,6 +36,25 @@ const initialFilters = {
   with_genres: '',
 };
 
+const sortSelectOptions = [
+  {
+    name: 'Popularity Descending',
+    value: 'popularity.desc',
+  },
+  {
+    name: 'Popularity Ascending',
+    value: 'popularity.asc',
+  },
+  {
+    name: 'Rating Descending',
+    value: 'vote_average.desc',
+  },
+  {
+    name: 'Rating Ascending',
+    value: 'vote_average.asc',
+  },
+];
+
 const Filter: React.FC<Props> = ({ filterParams, setFilterParams, type }) => {
   const [filters, setFilters] =
     useState<Partial<DiscoverFilterAndSortType>>(initialFilters);
@@ -97,18 +116,11 @@ const Filter: React.FC<Props> = ({ filterParams, setFilterParams, type }) => {
                     <SelectValue placeholder="Sort Options" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="popularity.desc">
-                      Popularity Descending
-                    </SelectItem>
-                    <SelectItem value="popularity.aesc">
-                      Popularity Ascending
-                    </SelectItem>
-                    <SelectItem value="vote_average.desc">
-                      Rating Descending
-                    </SelectItem>
-                    <SelectItem value="vote_average.asc">
-                      Rating Ascending
-                    </SelectItem>
+                    {sortSelectOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.name}
+                      </SelectItem>
+                    ))}
                     <SelectItem
                       value={type === 'movie' ? 'title.asc' : 'name.asc'}
                     >
@@ -147,7 +159,6 @@ const Filter: React.FC<Props> = ({ filterParams, setFilterParams, type }) => {
                 />
               </div>
               <Separator className="w-full" />
-
               <div className="flex flex-col gap-2 px-4 py-4">
                 <span className="text-base font-medium">Language</span>
                 <Select
@@ -192,49 +203,6 @@ const Filter: React.FC<Props> = ({ filterParams, setFilterParams, type }) => {
                   })}
                 </div>
               </div>
-              {/* <Separator className="w-full" /> */}
-
-              {/* <div className="relative flex flex-col gap-3 px-4 py-4">
-              <span className="text-base font-medium">User Votes</span>
-              <Slider
-                defaultValue={[userVotes.from, userVotes.to]}
-                max={10}
-                step={1}
-                className="mt-4"
-                onValueChange={handleUserVoteChange}
-              />
-              <div className="-mt-2 flex items-center justify-between">
-                <span>0</span>
-                <span>5</span>
-                <span>10</span>
-              </div>
-              <SliderChangeAlert
-                show={showUserVotesChangeAlert}
-                setShow={setShowUserVotesChangeAlert}
-                desc={`Rated ${userVotes.from} - ${userVotes.to}`}
-              />
-            </div>
-            <Separator className="w-full" />
-            <div className="relative flex flex-col gap-3 px-4 py-4">
-              <span className="text-base font-medium">Runtime</span>
-              <Slider
-                defaultValue={[userVotes.from, userVotes.to]}
-                max={10}
-                step={1}
-                className="mt-4"
-                onValueChange={handleUserVoteChange}
-              />
-              <div className="-mt-2 flex items-center justify-between">
-                <span>0</span>
-                <span>165</span>
-                <span>360</span>
-              </div>
-              <SliderChangeAlert
-                show={showUserVotesChangeAlert}
-                setShow={setShowUserVotesChangeAlert}
-                desc={`Rated ${userVotes.from} - ${userVotes.to}`}
-              />
-            </div> */}
             </AccordionContent>
           </AccordionItem>
         </Accordion>

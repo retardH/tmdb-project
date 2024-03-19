@@ -4,7 +4,7 @@ import React from 'react';
 import { BookmarkIcon, Play, Star } from 'lucide-react';
 import { Img } from 'react-image';
 import { useUser } from '@clerk/nextjs';
-import { addWatchList } from '@/services/watchLists';
+// import { addWatchList } from '@/services/watchLists';
 
 interface Props {
   backdropImage: string;
@@ -27,21 +27,19 @@ const BannerSection: React.FC<Props> = ({
   releaseDate,
   type,
 }) => {
-  const { user } = useUser();
-
-  const handleBookmarkClick = async () => {
-    await addWatchList(user?.username!, {
-      overview: 'some text',
-      title: 'Title',
-      rating: 8,
-      date: '2023-01-03',
-      id: 224,
-      poster_image: '',
-    });
-  };
+  // const handleBookmarkClick = async () => {
+  //   await addWatchList(user?.username!, {
+  //     overview: 'some text',
+  //     title: 'Title',
+  //     rating: 8,
+  //     date: '2023-01-03',
+  //     id: 224,
+  //     poster_image: '',
+  //   });
+  // };
 
   return (
-    <section className="relative z-10 h-[360px] w-full overflow-hidden md:h-[400px] xl:h-[460px]">
+    <section className="relative z-10 h-[360px] w-full overflow-hidden md:h-[400px] xl:h-[500px]">
       <Img
         src={backdropImage}
         alt="backdrop image"
@@ -111,12 +109,6 @@ const BannerSection: React.FC<Props> = ({
             </div>
           </div>
         </div>
-        {/* <div className="flex items-center gap-2">
-          <button className="flex items-center  justify-center rounded-full bg-slate-400 p-2">
-            <BookmarkIcon fill="yellow" />
-          </button>
-          <Star />
-        </div> */}
       </div>
     </section>
   );

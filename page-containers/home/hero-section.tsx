@@ -12,7 +12,7 @@ const HeroSection: React.FC<Props> = ({ imagePath }) => {
         alt="hero image"
         width={960}
         height={540}
-        className="absolute -z-20 h-[250px] w-full object-cover object-top md:h-[400px]"
+        className="absolute inset-0 -z-20 h-[250px] w-full object-cover object-top md:h-[400px]"
       />
       <div className="absolute inset-0 -z-10 bg-slate-900/80 backdrop-blur-sm"></div>
       <div className="flex flex-col justify-center p-6 md:p-14">

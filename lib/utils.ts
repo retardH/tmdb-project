@@ -1,6 +1,8 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import dayjs from 'dayjs';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from './firebase';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -36,3 +38,5 @@ export function formatRuntime(time: number) {
 export const routeFilter = (params: any) => {
   return new URLSearchParams(params);
 };
+
+

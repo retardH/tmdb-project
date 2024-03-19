@@ -14,7 +14,7 @@ const Footer = () => {
           >
             MUVI
           </h4>
-          <span>
+          <span className="text-sm md:text-base">
             &copy; All the data, photos and videos are used from{' '}
             <a
               href="https://themoviedb.org/"
@@ -28,16 +28,16 @@ const Footer = () => {
         </div>
         <div className="flex justify-between gap-4 md:justify-start md:gap-12">
           <div className="flex flex-col gap-2">
-            <h4 className="text-lg">The Basics</h4>
-            <a>About TMDB</a>
-            <a>API</a>
-            <a>Support Forum</a>
+            <h4 className="text-base md:text-lg">The Basics</h4>
+            <a className="text-sm md:text-base">About TMDB</a>
+            <a className="text-sm md:text-base">API</a>
+            <a className="text-sm md:text-base">Support Forum</a>
           </div>
           <div className="flex flex-col gap-2">
-            <h4 className="text-lg">Community</h4>
-            <a>Guidelines</a>
-            <a>Discussion</a>
-            <a>Leaderboard</a>
+            <h4 className="text-base md:text-lg">Community</h4>
+            <a className="text-sm md:text-base">Guidelines</a>
+            <a className="text-sm md:text-base">Discussion</a>
+            <a className="text-sm md:text-base">Leaderboard</a>
           </div>
         </div>
       </div>
