@@ -26,7 +26,7 @@ export default function RootLayout({
           <Providers>
             <ClerkLoaded>
               <Navbar />
-              <div>{children}</div>
+              <div className="overflow-x-hidden">{children}</div>
               <Footer />
             </ClerkLoaded>
             <ClerkLoading>

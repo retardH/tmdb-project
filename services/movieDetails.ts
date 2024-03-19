@@ -7,9 +7,3 @@ export const useMovieGeneralDetails = <ApiResponse>(
     `/movie/${movieId}?append_to_response=videos,credits,release_dates`,
   );
 };
-
-export const useMovieReviews = <ApiResponse>(
-  movieId: number,
-): SWRResponse<ApiResponse, any> => {
-  return useSWR(`/movie/${movieId}/reviews`);
-};

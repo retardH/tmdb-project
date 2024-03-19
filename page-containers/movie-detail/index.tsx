@@ -12,7 +12,6 @@ import { DetailPageSkeleton } from '@/components/shared/skeletons';
 import ReviewSection from '@/components/shared/reviews';
 import { ImageIcon } from 'lucide-react';
 import { Img } from 'react-image';
-import { useUser } from '@clerk/nextjs';
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -63,10 +62,10 @@ const MovieDetail = () => {
               </figure>
               <section className="flex-3 flex flex-col gap-3.5">
                 <div className="flex items-center gap-4">
-                  <div className="min-w-[40px] max-w-min rounded-md border border-slate-600 px-2 py-1 text-center text-sm uppercase md:text-base">
+                  <div className="min-w-[40px] max-w-min rounded-md border border-slate-800 px-2 py-1 text-center text-sm uppercase tracking-wide md:text-base">
                     {!certification ? 'NR' : certification}
                   </div>
-                  <div className="max-w-min rounded-md border border-slate-600 px-2 py-1 text-center text-sm uppercase md:text-base">
+                  <div className="max-w-min rounded-md border border-slate-800 px-2 py-1 text-center text-sm uppercase tracking-wide md:text-base">
                     {data?.status}
                   </div>
                 </div>

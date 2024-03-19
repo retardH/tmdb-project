@@ -1,13 +1,18 @@
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from './firebase';
+// import { doc, getDoc, setDoc } from 'firebase/firestore';
+// import { db } from './firebase';
 
-export const getFireBaseDoc = async (id: any) => {
-  const docRef = doc(db, 'user', 'HtetZarni');
-  const docSnap = await getDoc(docRef);
-  if (docSnap.exists()) {
-    console.log('Document data:', docSnap.data());
-  } else {
-    // docSnap.data() will be undefined in this case
-    console.log('No such document!');
-  }
-};
+// export const getCurrentUser = async (id: any) => {
+//   const docRef = doc(db, 'user', id);
+//   const docSnap = await getDoc(docRef);
+//   if (docSnap.exists()) {
+//     return docSnap.data();
+//   }
+// };
+
+// export const storeCurrentUser = async (user: any) => {
+//   await setDoc(doc(db, 'user', user.id), {
+//     username: user.username || user.fullName,
+//     watch_lists: [],
+//     favorites: [],
+//   });
+// };

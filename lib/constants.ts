@@ -13,10 +13,6 @@ export const NavLinks = [
         path: '/discover?type=movie&search=now_playing',
         text: 'now playing',
       },
-      // {
-      //   path: '/discover?type=movie&search=upcoming',
-      //   text: 'upcoming',
-      // },
       {
         path: '/discover?type=movie&search=top_rated',
         text: 'top rated',
@@ -35,10 +31,6 @@ export const NavLinks = [
         path: '/discover?type=tv&search=airing_today',
         text: 'airing today',
       },
-      // {
-      //   path: '/discover?type=tv&search=on_the_air',
-      //   text: 'on tv',
-      // },
       {
         path: '/discover?type=tv&search=top_rated',
         text: 'top rated',
@@ -202,6 +194,39 @@ export const tvGenres = [
     name: 'Western',
   },
 ];
+
+export const constantFilterParams: Record<string, any> = {
+  popular: {
+    sort_by: 'popularity.desc',
+  },
+  now_playing: {
+    sort_by: 'popularity.desc',
+    with_release_type: '2|3',
+    'release_date.gte': dayjs(new Date())
+      .subtract(1, 'month')
+      .format('YYYY-MM-DD'),
+    'release_date.lte': dayjs(new Date()).add(2, 'day').format('YYYY-MM-DD'),
+  },
+  airing_today: {
+    sort_by: 'popularity.desc',
+    with_release_type: '2|3',
+    'air_date.gte': dayjs(new Date()).subtract(1, 'month').format('YYYY-MM-DD'),
+    'air_date.lte': dayjs(new Date()).add(2, 'day').format('YYYY-MM-DD'),
+  },
+  upcoming: {
+    sort_by: 'popularity.desc',
+    with_release_type: '2|3',
+    'release_date.lte': dayjs(new Date()).add(1, 'month').format('YYYY-MM-DD'),
+    'release_date.gte': dayjs(new Date()).add(2, 'day').format('YYYY-MM-DD'),
+  },
+  top_rated: {
+    sort_by: 'vote_average.desc',
+    'vote_count.gte': 200,
+    // without_genres: '99,10775',
+  },
+};
+
+export const imageUrlOriginal = 'https://image.tmdb.org/t/p/original';
 
 export const languages = [
   {
@@ -1139,37 +1164,4 @@ export const languages = [
     english_name: 'Yoruba',
     name: 'Èdè Yorùbá',
   },
-] as const;
-
-export const constantFilterParams: Record<string, any> = {
-  popular: {
-    sort_by: 'popularity.desc',
-  },
-  now_playing: {
-    sort_by: 'popularity.desc',
-    with_release_type: '2|3',
-    'release_date.gte': dayjs(new Date())
-      .subtract(1, 'month')
-      .format('YYYY-MM-DD'),
-    'release_date.lte': dayjs(new Date()).add(2, 'day').format('YYYY-MM-DD'),
-  },
-  airing_today: {
-    sort_by: 'popularity.desc',
-    with_release_type: '2|3',
-    'air_date.gte': dayjs(new Date()).subtract(1, 'month').format('YYYY-MM-DD'),
-    'air_date.lte': dayjs(new Date()).add(2, 'day').format('YYYY-MM-DD'),
-  },
-  upcoming: {
-    sort_by: 'popularity.desc',
-    with_release_type: '2|3',
-    'release_date.lte': dayjs(new Date()).add(1, 'month').format('YYYY-MM-DD'),
-    'release_date.gte': dayjs(new Date()).add(2, 'day').format('YYYY-MM-DD'),
-  },
-  top_rated: {
-    sort_by: 'vote_average.desc',
-    'vote_count.gte': 200,
-    // without_genres: '99,10775',
-  },
-};
-
-export const imageUrlOriginal = 'https://image.tmdb.org/t/p/original';
+];

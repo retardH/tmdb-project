@@ -14,13 +14,23 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Search from './search';
 import Hamburger from 'hamburger-react';
+// import { getCurrentUser, storeCurrentUser } from '@/lib/actions';
 
 const Navbar = () => {
   const router = useRouter();
   const { isSignedIn, user } = useUser();
   const [searchBoxShow, setSearchBoxShow] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  console.log('user', user);
+
+  // useEffect(() => {
+  //   if (isSignedIn) {
+  //     getCurrentUser(user?.id).then((res) => {
+  //       if (!Boolean(res)) {
+  //         storeCurrentUser(user);
+  //       }
+  //     });
+  //   }
+  // }, [user, isSignedIn]);
   return (
     <nav className="border-b border-b-slate-500 bg-primary-950">
       <div className="wrapper relative flex items-center justify-between py-4">
