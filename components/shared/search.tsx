@@ -29,7 +29,7 @@ const Search: React.FC<Props> = ({ setShow }) => {
 
   return (
     <>
-      <div className="absolute right-0 top-full z-50 mr-2 mt-1 w-[95%] rounded-sm bg-slate-900/95 shadow-md backdrop-blur-xl sm:max-w-[600px] md:mx-[1.5rem] md:mr-0 lg:max-w-[800px]">
+      <div className="absolute right-0 top-full z-50 mr-2 mt-1 w-[100%] rounded-sm bg-slate-900/95 shadow-md backdrop-blur-xl sm:max-w-[600px] md:mx-[1.5rem] md:mr-0 lg:max-w-[800px]">
         <div className="flex items-center gap-1 p-2">
           <Input
             className="w-8/12 focus-visible:outline-0 focus-visible:ring-0 md:w-10/12"
@@ -47,9 +47,9 @@ const Search: React.FC<Props> = ({ setShow }) => {
             </SelectContent>
           </Select>
         </div>
-        <div className="mt-2 flex max-h-[400px] min-h-[60px] flex-col overflow-y-scroll">
+        <div className="flex max-h-[400px] min-h-[100px] flex-col overflow-y-scroll">
           {isLoading ? (
-            <div className="mt-2 flex items-center justify-center">
+            <div className="mb-2 mt-2 flex items-center justify-center">
               <LoadingIcon width={50} height={50} />
             </div>
           ) : !data || data.results.length < 1 ? (
